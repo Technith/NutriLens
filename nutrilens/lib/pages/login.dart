@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:nutrilens/components/button_fab.dart';
 import 'package:nutrilens/components/text_field_fab.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  void signIn() {}
+  void signIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
