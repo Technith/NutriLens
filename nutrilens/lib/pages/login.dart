@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:nutrilens/components/button_fab.dart';
-import 'package:nutrilens/components/text_field_fab.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import '../components/button_fab.dart';
+import '../components/text_field_fab.dart';
+import 'registration.dart';
+
 
 class LoginPage extends StatelessWidget {
   LoginPage({super.key});
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  void signIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text,
-        password: passwordController.text
-    );
-  }
+  void signIn(BuildContext context) {
+  Navigator.pushReplacementNamed(context, '/home'); // Navigate to HomePage
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +46,20 @@ class LoginPage extends StatelessWidget {
               const SizedBox(height: 50),
 
               // sign in button
-              ButtonFab(buttonText: 'Sign-In', onTap: signIn),
+              ButtonFab(
+                buttonText: 'Sign-In',
+                onTap: () => signIn(context),
+              ),
 
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => RegistrationPage()),
+                  );
+                },
+                child: Text("Register"),
+              ),
               // Oauth buttons
 
       ],)
