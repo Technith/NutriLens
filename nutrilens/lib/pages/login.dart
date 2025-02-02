@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import '../components/button_fab.dart';
-import '../components/text_field_fab.dart';
-import 'registration.dart';
+import 'package:nutrilens/components/button_fab.dart';
+import 'package:nutrilens/components/text_field_fab.dart';
+import 'package:nutrilens/pages/registration.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 
 class LoginPage extends StatelessWidget {
@@ -9,9 +10,18 @@ class LoginPage extends StatelessWidget {
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
-  void signIn(BuildContext context) {
-  Navigator.pushReplacementNamed(context, '/home'); // Navigate to HomePage
-}
+  void signIn() async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text,
+          password: passwordController.text
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found' || e.code == 'wrong-password') {
+        print("sign-in failed");
+      }
+    }
+  }
 
 
   @override
@@ -48,7 +58,7 @@ class LoginPage extends StatelessWidget {
               // sign in button
               ButtonFab(
                 buttonText: 'Sign-In',
-                onTap: () => signIn(context),
+                onTap: () => signIn(),
               ),
 
               TextButton(

@@ -7,7 +7,7 @@ class ButtonFab extends StatelessWidget {
   const ButtonFab({
     super.key,
     required this.buttonText,
-    required this.onTap
+    required this.onTap,
   });
 
   @override

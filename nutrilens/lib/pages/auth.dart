@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:nutrilens/pages/home.dart';
+import 'package:nutrilens/pages/main_page.dart';
 import 'package:nutrilens/pages/login.dart';
 
 class AuthPage extends StatelessWidget {
@@ -13,7 +13,7 @@ class AuthPage extends StatelessWidget {
           stream: FirebaseAuth.instance.authStateChanges(),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
-              return HomePage();
+              return MainPage();
             }
             else {
               return LoginPage();
