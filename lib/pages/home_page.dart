@@ -49,8 +49,11 @@ class HomePage extends StatelessWidget {
                 );
 
                 if (scannedCode != null && scannedCode != "-1") {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text("Scanned: $scannedCode")),
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProductDetailsPage(barcode: scannedCode),
+                    ),
                   );
                 }
               },

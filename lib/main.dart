@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'services/notification_service.dart';
 import 'pages/health_metrics_page.dart';
 import 'pages/login.dart';
-import 'pages/home_page.dart';
+import 'pages/home_page.dart' as main_home;
 import 'pages/settings_page.dart';
 import 'pages/search_page.dart';
 import 'pages/notifications_page.dart';
@@ -24,6 +24,7 @@ import 'services/api_service.dart';
 import 'pages/deals_page.dart';
 import 'pages/barcode_scanner_page.dart';
 import 'pages/report_issue_page.dart';
+
 
 
 void main() async {
@@ -56,7 +57,7 @@ class NutriLensApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => LoginPage(),
-        '/home': (context) => HomePage(),
+        '/home': (context) => main_home.HomePage(),
         '/barcode': (context) => BarcodeScannerPage(),
         '/settings': (context) => SettingsPage(),
         '/search': (context) => SearchPage(),
