@@ -243,6 +243,24 @@ class _SearchPageState extends State<SearchPage> {
                 ),
               ),
             ),
+            Center(
+                child: ElevatedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/add_ingredients');
+                  },
+                  style: ElevatedButton.styleFrom(
+                    //backgroundColor: ThemeColor.primary,
+                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                  ),
+                  child: Text(
+                    "Add Ingredients",
+                    //style: TextStyle(color: ThemeColor.textPrimary, fontSize: 16),
+                  ),
+                ),
+              ),
             const SizedBox(height: 40),
           ],
         ),

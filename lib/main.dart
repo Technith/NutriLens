@@ -24,6 +24,7 @@ import 'services/api_service.dart';
 import 'pages/deals_page.dart';
 import 'pages/barcode_scanner_page.dart';
 import 'pages/report_issue_page.dart';
+import 'pages/add_ingredients_page.dart';
 
 
 
@@ -76,7 +77,8 @@ class NutriLensApp extends StatelessWidget {
         '/glossary': (context) => GlossaryPage(),
         './deleted_notifications': (context) => DeletedNotificationsPage(),
         '/deals': (context) => DealsPage(),
-        '/report_issue': (context) => ReportIssuePage()
+        '/report_issue': (context) => ReportIssuePage(),
+        '/add_ingredients': (context) => AddIngredientsPage(),
       },
     );
   }
