@@ -1,6 +1,8 @@
 import '../components/button_fab.dart';
 import '../components/text_field_fab.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class RegistrationPage extends StatelessWidget {
   final emailController = TextEditingController();
@@ -8,7 +10,21 @@ class RegistrationPage extends StatelessWidget {
 
   RegistrationPage({super.key});
 
-  void register() {}
+  void register() async {
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text,
+        password: passwordController.text
+    );
+
+    User? user = FirebaseAuth.instance.currentUser;
+    // Check if user is singed in
+    if (user != null) {
+      DatabaseReference ref = FirebaseDatabase.instance.ref("Users/${user.uid}");
+      await ref.update({
+        "Email" : user.email,
+      });
+    }
+  }
 
 
   @override
@@ -39,8 +55,8 @@ class RegistrationPage extends StatelessWidget {
 
             const SizedBox(height: 50),
 
-              // sign in button
-            ButtonFab(buttonText: 'Register', onTap: register),
+            // sign in button
+            ButtonFab(buttonText: 'Register', onTap: () => {register(), Navigator.pop(context)}),
           ],
         ),
       ),

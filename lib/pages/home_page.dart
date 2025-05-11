@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'barcode_scanner_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -11,15 +12,15 @@ class HomePage extends StatelessWidget {
         centerTitle: true,
         elevation: 0,
         backgroundColor: Colors.white,
-        foregroundColor: Colors.black, // Text color
+        foregroundColor: Colors.black,
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center, // Center vertically
-          crossAxisAlignment: CrossAxisAlignment.center, // Center horizontally
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Icon(
-              Icons.camera_alt_outlined, // Camera icon
+              Icons.camera_alt_outlined,
               size: 150,
               color: Colors.black,
             ),
@@ -32,17 +33,39 @@ class HomePage extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
+            const SizedBox(height: 20),
+            ElevatedButton.icon(
+              icon: Icon(Icons.qr_code_scanner),
+              label: Text("Start Scanner"),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.green,
+                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
+              ),
+              onPressed: () async {
+                final scannedCode = await Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const BarcodeScannerPage()),
+                );
+
+                if (scannedCode != null && scannedCode != "-1") {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text("Scanned: $scannedCode")),
+                  );
+                }
+              },
+            ),
           ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 2, // Deals index will be 2 now
+        currentIndex: 3, // Home index
         type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.settings), label: ''),
           BottomNavigationBarItem(icon: Icon(Icons.notifications), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.local_offer), label: ''), // ✅ Deals tab
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.local_offer), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.home, color: Colors.green), label: ''),
           BottomNavigationBarItem(icon: Icon(Icons.search), label: ''),
           BottomNavigationBarItem(icon: Icon(Icons.person), label: ''),
         ],
@@ -52,7 +75,7 @@ class HomePage extends StatelessWidget {
           } else if (index == 1) {
             Navigator.pushNamed(context, '/notifications');
           } else if (index == 2) {
-            Navigator.pushNamed(context, '/deals'); // ✅ Deals page
+            Navigator.pushNamed(context, '/deals');
           } else if (index == 3) {
             Navigator.pushNamed(context, '/home');
           } else if (index == 4) {
@@ -62,7 +85,6 @@ class HomePage extends StatelessWidget {
           }
         },
       ),
-
     );
   }
 }

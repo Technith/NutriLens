@@ -22,6 +22,8 @@ import 'pages/glossary_page.dart';
 import 'pages/deleted_notifications_page.dart';
 import 'services/api_service.dart';
 import 'pages/deals_page.dart';
+import 'pages/barcode_scanner_page.dart';
+import 'pages/report_issue_page.dart';
 
 
 void main() async {
@@ -55,6 +57,7 @@ class NutriLensApp extends StatelessWidget {
       routes: {
         '/': (context) => LoginPage(),
         '/home': (context) => HomePage(),
+        '/barcode': (context) => BarcodeScannerPage(),
         '/settings': (context) => SettingsPage(),
         '/search': (context) => SearchPage(),
         '/notifications': (context) => NotificationsPage(),
@@ -71,7 +74,8 @@ class NutriLensApp extends StatelessWidget {
         '/history_log': (context) => HistoryLogPage(),
         '/glossary': (context) => GlossaryPage(),
         './deleted_notifications': (context) => DeletedNotificationsPage(),
-        '/deals': (context) => DealsPage()
+        '/deals': (context) => DealsPage(),
+        '/report_issue': (context) => ReportIssuePage()
       },
     );
   }

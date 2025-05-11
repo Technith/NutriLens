@@ -1,14 +1,64 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class GlossaryPage extends StatefulWidget {
-  const GlossaryPage({Key? key}) : super(key: key);
+
+  final String? defaultFilter;
+  final bool resetOnOpen;
+
+  const GlossaryPage({Key? key, this.defaultFilter, this.resetOnOpen = false}) : super(key: key);
+
+
+
 
   @override
   _GlossaryPageState createState() => _GlossaryPageState();
 }
 
 class _GlossaryPageState extends State<GlossaryPage> {
+
+  Set<String> _userAllergenPreferences = {}; // new for allergen color highlighting
+  Set<String> _userDietaryPreferences = {};
+
+
+
+
+
+  Future<void> _loadUserAllergenPreferences() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) return;
+
+    final allergenRef = FirebaseDatabase.instance.ref("Users/${user.uid}/AllergenPreferences");
+    final snapshot = await allergenRef.get();
+
+    if (snapshot.exists) {
+      final data = Map<String, dynamic>.from(snapshot.value as Map);
+      setState(() {
+        _userAllergenPreferences = Set<String>.from(
+            data.keys.map((e) => e.trim().toLowerCase())
+        );
+      });
+    }
+  }
+  Future<void> _loadUserDietaryPreferences() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) return;
+
+    final ref = FirebaseDatabase.instance.ref("Users/${user.uid}/DietaryPreferences");
+    final snapshot = await ref.get();
+
+    if (snapshot.exists) {
+      final data = Map<String, dynamic>.from(snapshot.value as Map);
+      setState(() {
+        _userDietaryPreferences = Set<String>.from(data.keys.map((e) => e.toLowerCase()));
+      });
+    }
+  }
+
+
+  List<Map<String, dynamic>> _allIngredients = []; // Stores the full list of ingredients
+
   final DatabaseReference _ingredientsRef =
   FirebaseDatabase.instance.ref('Ingredients');
 
@@ -31,9 +81,27 @@ class _GlossaryPageState extends State<GlossaryPage> {
   @override
   void initState() {
     super.initState();
+    _loadUserAllergenPreferences();
+    _loadUserPreferences();
+    _loadUserDietaryPreferences(); // <--- Add this
     _loadIngredients();
     _listenForUpdates();
+
+
+    if (widget.resetOnOpen) {
+      _userSafeIngredients.clear();
+      _userAvoidIngredients.clear();
+    }
+
+
+    if (widget.defaultFilter != null) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _filterIngredients(widget.defaultFilter!);
+      });
+    }
   }
+
+
 
   void _listenForUpdates() {
     _ingredientsRef.onValue.listen((event) {
@@ -55,15 +123,52 @@ class _GlossaryPageState extends State<GlossaryPage> {
                 ? (value["CommonUses"] as List<dynamic>).map((e) => e.toString()).join(", ")
                 : (value["CommonUses"]?.toString() ?? "No common uses listed."),
             "allergenMatch": value["AllergenMatch"] ?? [],
+            "DietaryTags": value["DietaryTags"] ?? [],
           });
         });
 
         setState(() {
+          _allIngredients = updatedIngredients;
           _displayedIngredients = updatedIngredients;
         });
       }
     });
   }
+
+  Future<void> _loadUserPreferences() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) return;
+
+    final prefsRef = FirebaseDatabase.instance
+        .ref("Users/${user.uid}/IngredientPreferences");
+
+    final snapshot = await prefsRef.get();
+
+    if (snapshot.exists) {
+      final data = Map<String, dynamic>.from(snapshot.value as Map);
+      setState(() {
+        _userSafeIngredients = Set<String>.from((data['safe'] ?? {}).keys);
+        _userAvoidIngredients = Set<String>.from((data['avoid'] ?? {}).keys);
+      });
+    }
+  }
+  Future<void> _saveUserPreferences() async {
+    final user = FirebaseAuth.instance.currentUser;
+    if (user == null) return;
+
+    final prefsRef = FirebaseDatabase.instance
+        .ref("Users/${user.uid}/IngredientPreferences");
+
+    await prefsRef.set({
+      "safe": {for (var item in _userSafeIngredients) item: true},
+      "avoid": {for (var item in _userAvoidIngredients) item: true},
+    });
+  }
+
+
+
+
+
 
   Future<void> _loadIngredients() async {
     if (!_hasMore) return;
@@ -264,43 +369,83 @@ class _GlossaryPageState extends State<GlossaryPage> {
       return;
     }
 
-    for (var ingredient in _displayedIngredients) {
+    for (var ingredient in _allIngredients) {
       final name = ingredient['name'];
       final matches = ingredient['allergenMatch'] ?? [];
+      final ingredientAllergens = matches.map((e) => e.toString().toLowerCase().trim()).toList();
 
-      if (filterType == 'allergen' && ingredient['allergenRisk'] == 'Yes') {
-        filtered.add(ingredient);
+      if (filterType == 'allergen') {
+        final userMatches = ingredientAllergens
+            .where((a) => _userAllergenPreferences.contains(a))
+            .toList();
+
+        if (userMatches.isNotEmpty) {
+          filtered.add(ingredient);
+        }
       } else if (filterType == 'safe') {
-        if ((ingredient['allergenRisk'] == 'No' || _userSafeIngredients.contains(name)) && !_userAvoidIngredients.contains(name)) {
+        if ((ingredient['allergenRisk'] == 'No' || _userSafeIngredients.contains(name)) &&
+            !_userAvoidIngredients.contains(name)) {
           filtered.add(ingredient);
         }
       } else if (filterType == 'avoided') {
         if (_userAvoidIngredients.contains(name)) {
           filtered.add(ingredient);
         }
-      } else if (filterType == 'highrisk' && matches.length > 1) {
-        filtered.add(ingredient);
-      } else if (filterType == 'lowrisk' && matches.length == 1) {
-        filtered.add(ingredient);
+      } else if (filterType == 'highrisk') {
+        final matchCount = ingredientAllergens
+            .where((a) => _userAllergenPreferences.contains(a))
+            .length;
+
+        if (matchCount > 1) {
+          filtered.add(ingredient);
+        }
+      } else if (filterType == 'lowrisk') {
+        final matchCount = ingredientAllergens
+            .where((a) => _userAllergenPreferences.contains(a))
+            .length;
+
+        if (matchCount == 1) {
+          filtered.add(ingredient);
+        }
       }
     }
 
     setState(() {
       _displayedIngredients = filtered;
     });
+
   }
 
   Color _getTileColor(Map<String, dynamic> ingredient) {
-    if (ingredient['allergenRisk'] == 'Yes') {
-      List<dynamic> matches = ingredient['allergenMatch'];
-      if (matches.length > 1) {
-        return Colors.orange[100]!; // High risk
-      } else {
-        return Colors.yellow[100]!; // Low risk
-      }
+    List<dynamic> matches = ingredient['allergenMatch'] ?? [];
+
+    final Set<String> normalizedUserPrefs =
+    _userAllergenPreferences.map((e) => e.toLowerCase().trim()).toSet();
+    final List<String> ingredientAllergens = matches
+        .map((e) => e.toString().toLowerCase().trim())
+        .where((e) => e.isNotEmpty)
+        .toList();
+
+    // Count how many user allergens match this ingredient
+    final int userAllergenMatches = ingredientAllergens
+        .where((a) => normalizedUserPrefs.contains(a))
+        .length;
+
+    if (userAllergenMatches > 1) {
+      return Colors.red.shade200; // multiple user allergens
+    } else if (userAllergenMatches == 1) {
+      return Colors.red.shade100; // one user allergen
     }
-    return Colors.white; // Safe
+
+    return Colors.white; // no match
   }
+
+
+
+
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -338,16 +483,34 @@ class _GlossaryPageState extends State<GlossaryPage> {
               title: Row(
                 children: [
                   Text(name),
+                  if ((ingredient['DietaryTags'] ?? [])
+                      .map((e) => e.toString().toLowerCase())
+                      .any((tag) => _userDietaryPreferences.contains(tag)))
+                    const Padding(
+                      padding: EdgeInsets.only(left: 8.0),
+                      child: Tooltip(
+                        message: "Matches your dietary preferences",
+                        child: Icon(Icons.thumb_up, color: Colors.green, size: 18),
+                      ),
+                    ),
                   if (isSafeMarked)
                     const Padding(
                       padding: EdgeInsets.only(left: 8.0),
-                      child: Icon(Icons.check_circle, color: Colors.green, size: 18),
+                      child: Tooltip(
+                        message: "Your Safe Ingredient",
+                        child: Icon(Icons.check_circle, color: Colors.green, size: 18),
+                      ),
                     ),
+
                   if (isAvoidMarked)
                     const Padding(
                       padding: EdgeInsets.only(left: 8.0),
-                      child: Icon(Icons.block, color: Colors.red, size: 18),
+                      child: Tooltip(
+                        message: "Your Avoided Ingredient",
+                        child: Icon(Icons.block, color: Colors.red, size: 18),
+                      ),
                     ),
+
                 ],
               ),
               subtitle: isExpanded
@@ -365,29 +528,34 @@ class _GlossaryPageState extends State<GlossaryPage> {
                   Row(
                     children: [
                       TextButton(
-                        onPressed: () {
+                        onPressed: () async {
                           setState(() {
                             if (isSafeMarked) {
                               _userSafeIngredients.remove(name);
                             } else {
                               _userSafeIngredients.add(name);
+                              _userAvoidIngredients.remove(name); // Remove from avoid if marked safe
                             }
                           });
+                          await _saveUserPreferences();
                         },
                         child: Text(isSafeMarked ? "Unmark Safe" : "Mark as Safe"),
                       ),
                       TextButton(
-                        onPressed: () {
+                        onPressed: () async {
                           setState(() {
                             if (isAvoidMarked) {
                               _userAvoidIngredients.remove(name);
                             } else {
                               _userAvoidIngredients.add(name);
+                              _userSafeIngredients.remove(name); // Remove from safe if marked avoid
                             }
                           });
+                          await _saveUserPreferences();
                         },
                         child: Text(isAvoidMarked ? "Unmark Avoid" : "Mark as Avoid"),
                       ),
+
                     ],
                   ),
                 ],

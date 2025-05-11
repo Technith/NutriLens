@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../services/api_service.dart';
 import '../services/notification_service.dart';
 import '../services/smart_final_deals_scraper.dart';
-import 'package:firebase_database/firebase_database.dart';
 import '../services/sprouts_deals_scraper.dart';
 import '../services/albertsons_deals_scraper.dart';
-
-
-
+import 'package:firebase_database/firebase_database.dart';
+import 'package:nutrilensfire/pages/login.dart'; // ✅ Import login.dart page
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -16,8 +15,8 @@ class SettingsPage extends StatefulWidget {
 }
 
 class _SettingsPageState extends State<SettingsPage> {
-  String _selectedFrequency = "daily"; // Default option
-  final String userId = "test_user"; // Replace with actual user ID (Firebase Auth)
+  String _selectedFrequency = "daily";
+  final String userId = "test_user";
 
   @override
   void initState() {
@@ -32,7 +31,6 @@ class _SettingsPageState extends State<SettingsPage> {
       _selectedFrequency = frequency;
     });
   }
-
 
   Future<void> testFirebaseWrite() async {
     final DatabaseReference testRef = FirebaseDatabase.instance.ref('test_connection');
@@ -53,7 +51,6 @@ class _SettingsPageState extends State<SettingsPage> {
     }
   }
 
-
   void _updateNotificationPreference(String newFrequency) async {
     var notificationService = Provider.of<NotificationService>(context, listen: false);
     await notificationService.saveNotificationFrequency(userId, newFrequency);
@@ -69,6 +66,8 @@ class _SettingsPageState extends State<SettingsPage> {
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Nutrilens'),
@@ -80,25 +79,16 @@ class _SettingsPageState extends State<SettingsPage> {
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
         children: [
-          /// **Notifications**
           ListTile(
-            title: const Text(
-              'Notifications',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
+            title: const Text('Notifications', style: TextStyle(fontWeight: FontWeight.bold)),
             trailing: const Icon(Icons.arrow_forward_ios),
             onTap: () {
               Navigator.pushNamed(context, '/notifications');
             },
           ),
           const Divider(),
-
-          /// Notification Frequency
           ListTile(
-            title: const Text(
-              'Notification Frequency',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
+            title: const Text('Notification Frequency', style: TextStyle(fontWeight: FontWeight.bold)),
             subtitle: const Text("Choose how often you receive alerts"),
             trailing: DropdownButton<String>(
               value: _selectedFrequency,
@@ -113,18 +103,12 @@ class _SettingsPageState extends State<SettingsPage> {
             ),
           ),
           const Divider(),
-
-          /// **FDA Recalls Check**
           ListTile(
-            title: const Text(
-              'Check FDA Recalls',
-              style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red),
-            ),
+            title: const Text('Check FDA Recalls', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red)),
             trailing: const Icon(Icons.warning, color: Colors.red),
             onTap: () async {
               ApiService apiService = ApiService();
               await apiService.fetchFDARecalls();
-
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(
                   content: Text("🔍 Checking for FDA Recalls..."),
@@ -134,102 +118,66 @@ class _SettingsPageState extends State<SettingsPage> {
             },
           ),
           const Divider(),
-
-          // Web Scraper
           ListTile(
             title: const Text('Fetch Albertsons Deals', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red)),
             trailing: const Icon(Icons.local_offer, color: Colors.red),
             onTap: () async {
               final scraper = AlbertsonsDealsScraper();
               await scraper.scrapeAndSaveDeals();
-
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('✅ Albertsons Deals fetched and saved!')),
               );
             },
           ),
           const Divider(),
-
-
-          /// **Language**
           ListTile(
-            title: const Text(
-              'Language',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
+            title: const Text('Language', style: TextStyle(fontWeight: FontWeight.bold)),
             trailing: const Icon(Icons.arrow_forward_ios),
             onTap: () {
               Navigator.pushNamed(context, '/language');
             },
           ),
           const Divider(),
-
-          /// **Theme**
           ListTile(
-            title: const Text(
-              'Theme',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
+            title: const Text('Theme', style: TextStyle(fontWeight: FontWeight.bold)),
             trailing: const Icon(Icons.arrow_forward_ios),
             onTap: () {
               Navigator.pushNamed(context, '/theme');
             },
           ),
           const Divider(),
-
-          /// **Dietary Preferences**
           ListTile(
-            title: const Text(
-              'Dietary Preferences',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
+            title: const Text('Dietary Preferences', style: TextStyle(fontWeight: FontWeight.bold)),
             trailing: const Icon(Icons.arrow_forward_ios),
             onTap: () {
               Navigator.pushNamed(context, '/dietary_preferences');
             },
           ),
           const Divider(),
-
-          /// **User Guide**
           ListTile(
-            title: const Text(
-              'User Guide',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
+            title: const Text('User Guide', style: TextStyle(fontWeight: FontWeight.bold)),
             trailing: const Icon(Icons.arrow_forward_ios),
             onTap: () {
               Navigator.pushNamed(context, '/user_guide');
             },
           ),
           const Divider(),
-
-          /// **Support**
           ListTile(
-            title: const Text(
-              'Support',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
+            title: const Text('Support', style: TextStyle(fontWeight: FontWeight.bold)),
             trailing: const Icon(Icons.arrow_forward_ios),
             onTap: () {
               Navigator.pushNamed(context, '/support');
             },
           ),
           const Divider(),
-
-          /// **Change Password**
           ListTile(
-            title: const Text(
-              'Change Password',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
+            title: const Text('Change Password', style: TextStyle(fontWeight: FontWeight.bold)),
             trailing: const Icon(Icons.arrow_forward_ios),
             onTap: () {
               Navigator.pushNamed(context, '/change_password');
             },
           ),
           const Divider(),
-
-
           ListTile(
             title: const Text('Test Firebase Connection', style: TextStyle(fontWeight: FontWeight.bold)),
             trailing: const Icon(Icons.cloud_upload),
@@ -239,47 +187,34 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           const Divider(),
 
-
-
-          /// **Log out**
-          ListTile(
-            title: const Text(
-              'Log out',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.red,
+          if (user != null)
+            ListTile(
+              title: const Text(
+                'Log out',
+                style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red),
               ),
+              onTap: () async {
+                await FirebaseAuth.instance.signOut();
+                if (context.mounted) {
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (_) => LoginPage()),
+                        (route) => false,
+                  );
+                }
+              },
             ),
-            onTap: () {
-              Navigator.pushReplacementNamed(context, '/login');
-            },
-          ),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: 0,
         type: BottomNavigationBarType.fixed,
         items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings, color: Colors.green),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.notifications),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: '',
-          ),
+          BottomNavigationBarItem(icon: Icon(Icons.settings, color: Colors.green), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.notifications), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.person), label: ''),
         ],
         onTap: (index) {
           if (index == 0) {
