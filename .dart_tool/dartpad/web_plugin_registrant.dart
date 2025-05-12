@@ -10,6 +10,7 @@ import 'package:firebase_auth_web/firebase_auth_web.dart';
 import 'package:firebase_core_web/firebase_core_web.dart';
 import 'package:firebase_database_web/firebase_database_web.dart';
 import 'package:firebase_messaging_web/firebase_messaging_web.dart';
+import 'package:image_picker_for_web/image_picker_for_web.dart';
 import 'package:mobile_scanner/src/web/mobile_scanner_web.dart';
 import 'package:permission_handler_html/permission_handler_html.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
@@ -20,6 +21,7 @@ void registerPlugins([final Registrar? pluginRegistrar]) {
   FirebaseCoreWeb.registerWith(registrar);
   FirebaseDatabaseWeb.registerWith(registrar);
   FirebaseMessagingWeb.registerWith(registrar);
+  ImagePickerPlugin.registerWith(registrar);
   MobileScannerWeb.registerWith(registrar);
   WebPermissionHandler.registerWith(registrar);
   registrar.registerMessageHandler();

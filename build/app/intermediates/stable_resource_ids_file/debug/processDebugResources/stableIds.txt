@@ -1,4 +1,4 @@
-com.example.nutrilensfire:xml/image_share_filepaths = 0x7f110000
+com.example.nutrilensfire:xml/image_share_filepaths = 0x7f110001
 com.example.nutrilensfire:styleable/ViewBackgroundHelper = 0x7f100034
 com.example.nutrilensfire:styleable/View = 0x7f100033
 com.example.nutrilensfire:styleable/StateListDrawableItem = 0x7f10002f
@@ -945,6 +945,7 @@ com.example.nutrilensfire:attr/textAppearanceListItem = 0x7f030109
 com.example.nutrilensfire:attr/listMenuViewStyle = 0x7f0300b3
 com.example.nutrilensfire:style/TextAppearance.AppCompat.SearchResult.Subtitle = 0x7f0f00d2
 com.example.nutrilensfire:attr/subtitleTextStyle = 0x7f030100
+com.example.nutrilensfire:xml/flutter_image_picker_file_paths = 0x7f110000
 com.example.nutrilensfire:attr/subtitle = 0x7f0300fd
 com.example.nutrilensfire:dimen/abc_action_bar_subtitle_bottom_margin_material = 0x7f06000b
 com.example.nutrilensfire:attr/actionModeCloseDrawable = 0x7f030013

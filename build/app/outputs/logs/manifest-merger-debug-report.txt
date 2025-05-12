@@ -10,12 +10,20 @@ MERGED from [:firebase_messaging] C:\Users\csulb\Documents\GitHub\NutriLens\buil
 MERGED from [:firebase_messaging] C:\Users\csulb\Documents\GitHub\NutriLens\build\firebase_messaging\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:13:5-46:19
 MERGED from [:firebase_core] C:\Users\csulb\Documents\GitHub\NutriLens\build\firebase_core\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:7:5-13:19
 MERGED from [:firebase_core] C:\Users\csulb\Documents\GitHub\NutriLens\build\firebase_core\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:7:5-13:19
+MERGED from [:image_picker_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:8:5-32:19
+MERGED from [:image_picker_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:8:5-32:19
 MERGED from [androidx.camera:camera-core:1.3.4] C:\Users\csulb\.gradle\caches\8.10.2\transforms\8bd470afad6cd272cc0b2e6bbdacbe98\transformed\jetified-camera-core-1.3.4\AndroidManifest.xml:23:5-34:19
 MERGED from [androidx.camera:camera-core:1.3.4] C:\Users\csulb\.gradle\caches\8.10.2\transforms\8bd470afad6cd272cc0b2e6bbdacbe98\transformed\jetified-camera-core-1.3.4\AndroidManifest.xml:23:5-34:19
 MERGED from [androidx.camera:camera-camera2:1.3.4] C:\Users\csulb\.gradle\caches\8.10.2\transforms\0363abd935bb9255bb75e9082ff9e5f3\transformed\jetified-camera-camera2-1.3.4\AndroidManifest.xml:23:5-34:19
 MERGED from [androidx.camera:camera-camera2:1.3.4] C:\Users\csulb\.gradle\caches\8.10.2\transforms\0363abd935bb9255bb75e9082ff9e5f3\transformed\jetified-camera-camera2-1.3.4\AndroidManifest.xml:23:5-34:19
 MERGED from [com.google.firebase:firebase-auth:23.2.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\05e8620cc5f010181c02988a158c637d\transformed\jetified-firebase-auth-23.2.0\AndroidManifest.xml:28:5-73:19
 MERGED from [com.google.firebase:firebase-auth:23.2.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\05e8620cc5f010181c02988a158c637d\transformed\jetified-firebase-auth-23.2.0\AndroidManifest.xml:28:5-73:19
+MERGED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\4db834ce90fc25246276ee7f2b3a26de\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.1\AndroidManifest.xml:8:5-16:19
+MERGED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\4db834ce90fc25246276ee7f2b3a26de\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.1\AndroidManifest.xml:8:5-16:19
+MERGED from [com.google.android.gms:play-services-mlkit-text-recognition-common:18.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\bba999dc2db4672797ad0f897fbf9b04\transformed\jetified-play-services-mlkit-text-recognition-common-18.0.0\AndroidManifest.xml:8:5-16:19
+MERGED from [com.google.android.gms:play-services-mlkit-text-recognition-common:18.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\bba999dc2db4672797ad0f897fbf9b04\transformed\jetified-play-services-mlkit-text-recognition-common-18.0.0\AndroidManifest.xml:8:5-16:19
+MERGED from [com.google.mlkit:vision-common:17.3.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\a05b5895d4441831cef9203768ec4801\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:8:5-16:19
+MERGED from [com.google.mlkit:vision-common:17.3.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\a05b5895d4441831cef9203768ec4801\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:8:5-16:19
 MERGED from [com.google.firebase:firebase-database:21.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\79b3d919b76c49dd55792c935cbb2444\transformed\jetified-firebase-database-21.0.0\AndroidManifest.xml:25:5-36:19
 MERGED from [com.google.firebase:firebase-database:21.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\79b3d919b76c49dd55792c935cbb2444\transformed\jetified-firebase-database-21.0.0\AndroidManifest.xml:25:5-36:19
 MERGED from [com.google.firebase:firebase-messaging-ktx:24.1.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\d080230a66ff6b581f66e9f952310808\transformed\jetified-firebase-messaging-ktx-24.1.1\AndroidManifest.xml:22:5-30:19
@@ -30,10 +38,6 @@ MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] C:\Users\csulb\.g
 MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\ce52788a58cccaeb8e26ccb3742a5810\transformed\jetified-firebase-auth-interop-20.0.0\AndroidManifest.xml:7:5-8:19
 MERGED from [com.google.firebase:firebase-common:21.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\f84ab3ff6a97e53fb3163820143e7e79\transformed\jetified-firebase-common-21.0.0\AndroidManifest.xml:22:5-39:19
 MERGED from [com.google.firebase:firebase-common:21.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\f84ab3ff6a97e53fb3163820143e7e79\transformed\jetified-firebase-common-21.0.0\AndroidManifest.xml:22:5-39:19
-MERGED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\4db834ce90fc25246276ee7f2b3a26de\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.1\AndroidManifest.xml:8:5-16:19
-MERGED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\4db834ce90fc25246276ee7f2b3a26de\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.1\AndroidManifest.xml:8:5-16:19
-MERGED from [com.google.mlkit:vision-common:17.3.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\a05b5895d4441831cef9203768ec4801\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:8:5-16:19
-MERGED from [com.google.mlkit:vision-common:17.3.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\a05b5895d4441831cef9203768ec4801\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:8:5-16:19
 MERGED from [com.google.mlkit:common:18.11.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\eb2477fd659c6578bc869f4d6edf4d2b\transformed\jetified-common-18.11.0\AndroidManifest.xml:8:5-24:19
 MERGED from [com.google.mlkit:common:18.11.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\eb2477fd659c6578bc869f4d6edf4d2b\transformed\jetified-common-18.11.0\AndroidManifest.xml:8:5-24:19
 MERGED from [androidx.credentials:credentials-play-services-auth:1.2.0-rc01] C:\Users\csulb\.gradle\caches\8.10.2\transforms\488888695e2d7dd89ec8d365a99761fe\transformed\jetified-credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:23:5-42:19
@@ -99,6 +103,10 @@ MERGED from [:firebase_auth] C:\Users\csulb\Documents\GitHub\NutriLens\build\fir
 MERGED from [:firebase_database] C:\Users\csulb\Documents\GitHub\NutriLens\build\firebase_database\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:2:1-15:12
 MERGED from [:firebase_messaging] C:\Users\csulb\Documents\GitHub\NutriLens\build\firebase_messaging\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:2:1-48:12
 MERGED from [:firebase_core] C:\Users\csulb\Documents\GitHub\NutriLens\build\firebase_core\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:2:1-15:12
+MERGED from [:image_picker_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:2:1-34:12
+MERGED from [:flutter_plugin_android_lifecycle] C:\Users\csulb\Documents\GitHub\NutriLens\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:2:1-7:12
+MERGED from [:google_mlkit_text_recognition] C:\Users\csulb\Documents\GitHub\NutriLens\build\google_mlkit_text_recognition\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:2:1-7:12
+MERGED from [:google_mlkit_commons] C:\Users\csulb\Documents\GitHub\NutriLens\build\google_mlkit_commons\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:2:1-7:12
 MERGED from [:path_provider_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\path_provider_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:2:1-7:12
 MERGED from [:permission_handler_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\permission_handler_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:2:1-7:12
 MERGED from [:sqflite_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\sqflite_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:2:1-7:12
@@ -107,6 +115,13 @@ MERGED from [androidx.camera:camera-camera2:1.3.4] C:\Users\csulb\.gradle\caches
 MERGED from [androidx.camera:camera-lifecycle:1.3.4] C:\Users\csulb\.gradle\caches\8.10.2\transforms\fc050ad4b66ae7fc168c063a93916410\transformed\jetified-camera-lifecycle-1.3.4\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.firebase:firebase-auth:23.2.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\05e8620cc5f010181c02988a158c637d\transformed\jetified-firebase-auth-23.2.0\AndroidManifest.xml:17:1-75:12
 MERGED from [com.google.mlkit:barcode-scanning:17.3.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\fe1fbfe34d27086b1ce435f55c1534d3\transformed\jetified-barcode-scanning-17.3.0\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.mlkit:text-recognition:16.0.0-beta6] C:\Users\csulb\.gradle\caches\8.10.2\transforms\ba979dc43c2935710b6f84bb6cee04e0\transformed\jetified-text-recognition-16.0.0-beta6\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.mlkit:text-recognition-bundled-common:16.0.0-beta6] C:\Users\csulb\.gradle\caches\8.10.2\transforms\378f3bc97d9c5fd1ab1a1b7369bd5b0d\transformed\jetified-text-recognition-bundled-common-16.0.0-beta6\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\4db834ce90fc25246276ee7f2b3a26de\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.1\AndroidManifest.xml:2:1-18:12
+MERGED from [com.google.mlkit:barcode-scanning-common:17.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\2e5db330d9fa486b75556b2f53cb9b78\transformed\jetified-barcode-scanning-common-17.0.0\AndroidManifest.xml:2:1-7:12
+MERGED from [com.google.android.gms:play-services-mlkit-text-recognition:18.0.2] C:\Users\csulb\.gradle\caches\8.10.2\transforms\c37a9cb03f2586e2ee9143a089584220\transformed\jetified-play-services-mlkit-text-recognition-18.0.2\AndroidManifest.xml:2:1-8:12
+MERGED from [com.google.android.gms:play-services-mlkit-text-recognition-common:18.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\bba999dc2db4672797ad0f897fbf9b04\transformed\jetified-play-services-mlkit-text-recognition-common-18.0.0\AndroidManifest.xml:2:1-18:12
+MERGED from [com.google.mlkit:vision-common:17.3.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\a05b5895d4441831cef9203768ec4801\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:2:1-18:12
 MERGED from [com.google.firebase:firebase-database:21.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\79b3d919b76c49dd55792c935cbb2444\transformed\jetified-firebase-database-21.0.0\AndroidManifest.xml:15:1-38:12
 MERGED from [com.google.firebase:firebase-messaging-ktx:24.1.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\d080230a66ff6b581f66e9f952310808\transformed\jetified-firebase-messaging-ktx-24.1.1\AndroidManifest.xml:17:1-32:12
 MERGED from [com.google.firebase:firebase-messaging:24.1.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\199232ed6902b0acd82f2cf4e26ef43f\transformed\jetified-firebase-messaging-24.1.1\AndroidManifest.xml:17:1-66:12
@@ -114,9 +129,6 @@ MERGED from [com.google.firebase:firebase-installations:18.0.0] C:\Users\csulb\.
 MERGED from [com.google.firebase:firebase-common-ktx:21.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\1d2ed2d712f5e817992f6fd253969006\transformed\jetified-firebase-common-ktx-21.0.0\AndroidManifest.xml:2:1-18:12
 MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\ce52788a58cccaeb8e26ccb3742a5810\transformed\jetified-firebase-auth-interop-20.0.0\AndroidManifest.xml:2:1-10:12
 MERGED from [com.google.firebase:firebase-common:21.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\f84ab3ff6a97e53fb3163820143e7e79\transformed\jetified-firebase-common-21.0.0\AndroidManifest.xml:15:1-41:12
-MERGED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\4db834ce90fc25246276ee7f2b3a26de\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.1\AndroidManifest.xml:2:1-18:12
-MERGED from [com.google.mlkit:barcode-scanning-common:17.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\2e5db330d9fa486b75556b2f53cb9b78\transformed\jetified-barcode-scanning-common-17.0.0\AndroidManifest.xml:2:1-7:12
-MERGED from [com.google.mlkit:vision-common:17.3.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\a05b5895d4441831cef9203768ec4801\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:2:1-18:12
 MERGED from [com.google.mlkit:common:18.11.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\eb2477fd659c6578bc869f4d6edf4d2b\transformed\jetified-common-18.11.0\AndroidManifest.xml:2:1-26:12
 MERGED from [androidx.credentials:credentials:1.2.0-rc01] C:\Users\csulb\.gradle\caches\8.10.2\transforms\c9da39af860cbc6bfc2bc363bc8cb6b5\transformed\jetified-credentials-1.2.0-rc01\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.credentials:credentials-play-services-auth:1.2.0-rc01] C:\Users\csulb\.gradle\caches\8.10.2\transforms\488888695e2d7dd89ec8d365a99761fe\transformed\jetified-credentials-play-services-auth-1.2.0-rc01\AndroidManifest.xml:17:1-44:12
@@ -134,22 +146,22 @@ MERGED from [com.google.android.gms:play-services-base:18.5.0] C:\Users\csulb\.g
 MERGED from [com.google.mlkit:vision-interfaces:16.3.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\3527dd3e0f3b6b8331bc60f513b96250\transformed\jetified-vision-interfaces-16.3.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.window:window:1.2.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\5093ab42d2307deb2d7ac0b7f5718c38\transformed\jetified-window-1.2.0\AndroidManifest.xml:17:1-31:12
 MERGED from [androidx.window:window-java:1.2.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\c1f85211ae6978d0218d51595a7f7e62\transformed\jetified-window-java-1.2.0\AndroidManifest.xml:17:1-21:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.7.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\ebeb29d7113d60e59d5e0acf92f847f3\transformed\jetified-lifecycle-livedata-core-ktx-2.7.0\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\e2e21678784b3eef6b33f576b1691a56\transformed\lifecycle-livedata-core-2.7.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\c7156a54e8f0502a1f8f57797d8b3e6e\transformed\jetified-lifecycle-viewmodel-savedstate-2.7.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.gms:play-services-stats:17.0.2] C:\Users\csulb\.gradle\caches\8.10.2\transforms\b426ae45ba34699527b81c12c814bb78\transformed\jetified-play-services-stats-17.0.2\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\6d6ee565ab495ccfff8140c2f79bcdec\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.loader:loader:1.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\d6334635279cb43af07c2144a95c2be9\transformed\loader-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\a12a090674da1baef97900c09c2e9654\transformed\jetified-appcompat-resources-1.6.1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.appcompat:appcompat:1.6.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\67e431d42222568371fff0afd22bbdc6\transformed\appcompat-1.6.1\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.activity:activity:1.8.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\13dd610fda78ecd8ad3daad9b8195d7e\transformed\jetified-activity-1.8.1\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.7.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\ebeb29d7113d60e59d5e0acf92f847f3\transformed\jetified-lifecycle-livedata-core-ktx-2.7.0\AndroidManifest.xml:2:1-7:12
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\c7156a54e8f0502a1f8f57797d8b3e6e\transformed\jetified-lifecycle-viewmodel-savedstate-2.7.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.7.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\1b91be3af319ede480d7185430690ee1\transformed\lifecycle-viewmodel-2.7.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\e2e21678784b3eef6b33f576b1691a56\transformed\lifecycle-livedata-core-2.7.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.7.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\e0eede8414d1ee0e5f236daeb1a2e59a\transformed\lifecycle-livedata-2.7.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-installations-interop:17.1.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\277aa05e63c0582e9a6c0fb9811696d7\transformed\jetified-firebase-installations-interop-17.1.1\AndroidManifest.xml:15:1-19:12
 MERGED from [com.google.android.gms:play-services-tasks:18.2.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\e565694bd8e7fc6bedaaac67255baf8f\transformed\jetified-play-services-tasks-18.2.0\AndroidManifest.xml:2:1-5:12
 MERGED from [com.google.firebase:firebase-measurement-connector:19.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\b2dbfa2b099ab663030b8159eebacd12\transformed\jetified-firebase-measurement-connector-19.0.0\AndroidManifest.xml:17:1-25:12
 MERGED from [com.google.android.gms:play-services-basement:18.4.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\5568a35fadd1ad6d1c703f16a16e5540\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.fragment:fragment:1.7.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\55520e4df2220e27f13f0bbb7467d11a\transformed\fragment-1.7.1\AndroidManifest.xml:2:1-7:12
+MERGED from [androidx.activity:activity:1.9.3] C:\Users\csulb\.gradle\caches\8.10.2\transforms\a70ddd560199940b45ffc1a1c4db7f79\transformed\jetified-activity-1.9.3\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.browser:browser:1.4.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\f8742dbdd8ad548bbf5dde49a0ea9a7d\transformed\browser-1.4.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\ddd5e7b38041965968ff0c456e5ef322\transformed\viewpager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.core:core-ktx:1.13.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\6ec70d4eb0351866340efe37c2014fef\transformed\jetified-core-ktx-1.13.1\AndroidManifest.xml:2:1-7:12
@@ -164,19 +176,19 @@ MERGED from [androidx.lifecycle:lifecycle-runtime:2.7.0] C:\Users\csulb\.gradle\
 MERGED from [androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\e80aa748ff6540407d8dba61c0d945fe\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:17:1-35:12
 MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\b3d51a44ab6b56289d4858158a1ad6dd\transformed\jetified-savedstate-1.2.1\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.1.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\2a0d5794843604364eca179d4eb7b8a1\transformed\localbroadcastmanager-1.1.0\AndroidManifest.xml:17:1-24:12
+MERGED from [androidx.exifinterface:exifinterface:1.3.7] C:\Users\csulb\.gradle\caches\8.10.2\transforms\3b98555939aa5eea06aa9fccf2cf9525\transformed\exifinterface-1.3.7\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:17:1-55:12
 MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\e0d9d3675465ff69d847e2f781f20c61\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:17:1-33:12
 MERGED from [androidx.tracing:tracing:1.2.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\285b6d6abe2dd4ba9515886e610a7341\transformed\jetified-tracing-1.2.0\AndroidManifest.xml:17:1-22:12
-MERGED from [com.google.firebase:firebase-components:18.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\30d6dde8f6241b92bb3c0336da77a097\transformed\jetified-firebase-components-18.0.0\AndroidManifest.xml:15:1-20:12
 MERGED from [com.google.firebase:firebase-datatransport:18.2.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\f74e7aec8d7941409c0ca3891ecaa09e\transformed\jetified-firebase-datatransport-18.2.0\AndroidManifest.xml:15:1-31:12
 MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.9] C:\Users\csulb\.gradle\caches\8.10.2\transforms\7f08bc2171c491c5055f20402eb4a550\transformed\jetified-transport-backend-cct-3.1.9\AndroidManifest.xml:15:1-37:12
 MERGED from [com.google.firebase:firebase-encoders-json:18.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\7d0d33ecaece8d17a3b79a6bcd1ce82f\transformed\jetified-firebase-encoders-json-18.0.0\AndroidManifest.xml:15:1-23:12
 MERGED from [com.google.android.datatransport:transport-runtime:3.1.9] C:\Users\csulb\.gradle\caches\8.10.2\transforms\5838d9648eb8f6a5577a2ee0f60df4e7\transformed\jetified-transport-runtime-3.1.9\AndroidManifest.xml:15:1-41:12
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\ccaaf8ba0ff17d4bbcf5fc9064ae7a64\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\92a2169b5b2674c8bbe10e1b1d80da0f\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
+MERGED from [com.google.firebase:firebase-components:18.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\30d6dde8f6241b92bb3c0336da77a097\transformed\jetified-firebase-components-18.0.0\AndroidManifest.xml:15:1-20:12
 MERGED from [com.google.android.datatransport:transport-api:3.1.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\881c4abfce54f2ad198c7660c5ae4450\transformed\jetified-transport-api-3.1.0\AndroidManifest.xml:15:1-20:12
 MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\ff849810dfe34a0ab790c402787c149e\transformed\core-runtime-2.2.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\92a2169b5b2674c8bbe10e1b1d80da0f\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:17:1-27:12
-MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\ccaaf8ba0ff17d4bbcf5fc9064ae7a64\transformed\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.exifinterface:exifinterface:1.3.2] C:\Users\csulb\.gradle\caches\8.10.2\transforms\4634cd8ce705c2466d5626ee92bbbe49\transformed\exifinterface-1.3.2\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.window.extensions.core:core:1.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\47506b70b93177473c53f4d5d7e77c91\transformed\jetified-core-1.0.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\e4e9d33e8be7718e1e9997a4b8a9b898\transformed\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\76a0dd850d9f18b6d5dce2588e83d61b\transformed\documentfile-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -238,6 +250,14 @@ MERGED from [:firebase_messaging] C:\Users\csulb\Documents\GitHub\NutriLens\buil
 MERGED from [:firebase_messaging] C:\Users\csulb\Documents\GitHub\NutriLens\build\firebase_messaging\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] C:\Users\csulb\Documents\GitHub\NutriLens\build\firebase_core\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] C:\Users\csulb\Documents\GitHub\NutriLens\build\firebase_core\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
+MERGED from [:image_picker_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:6:5-44
+MERGED from [:image_picker_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:6:5-44
+MERGED from [:flutter_plugin_android_lifecycle] C:\Users\csulb\Documents\GitHub\NutriLens\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
+MERGED from [:flutter_plugin_android_lifecycle] C:\Users\csulb\Documents\GitHub\NutriLens\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
+MERGED from [:google_mlkit_text_recognition] C:\Users\csulb\Documents\GitHub\NutriLens\build\google_mlkit_text_recognition\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
+MERGED from [:google_mlkit_text_recognition] C:\Users\csulb\Documents\GitHub\NutriLens\build\google_mlkit_text_recognition\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
+MERGED from [:google_mlkit_commons] C:\Users\csulb\Documents\GitHub\NutriLens\build\google_mlkit_commons\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
+MERGED from [:google_mlkit_commons] C:\Users\csulb\Documents\GitHub\NutriLens\build\google_mlkit_commons\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\path_provider_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
 MERGED from [:path_provider_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\path_provider_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
 MERGED from [:permission_handler_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\permission_handler_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:5:5-44
@@ -254,6 +274,20 @@ MERGED from [com.google.firebase:firebase-auth:23.2.0] C:\Users\csulb\.gradle\ca
 MERGED from [com.google.firebase:firebase-auth:23.2.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\05e8620cc5f010181c02988a158c637d\transformed\jetified-firebase-auth-23.2.0\AndroidManifest.xml:21:5-23:151
 MERGED from [com.google.mlkit:barcode-scanning:17.3.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\fe1fbfe34d27086b1ce435f55c1534d3\transformed\jetified-barcode-scanning-17.3.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.mlkit:barcode-scanning:17.3.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\fe1fbfe34d27086b1ce435f55c1534d3\transformed\jetified-barcode-scanning-17.3.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.mlkit:text-recognition:16.0.0-beta6] C:\Users\csulb\.gradle\caches\8.10.2\transforms\ba979dc43c2935710b6f84bb6cee04e0\transformed\jetified-text-recognition-16.0.0-beta6\AndroidManifest.xml:5:5-44
+MERGED from [com.google.mlkit:text-recognition:16.0.0-beta6] C:\Users\csulb\.gradle\caches\8.10.2\transforms\ba979dc43c2935710b6f84bb6cee04e0\transformed\jetified-text-recognition-16.0.0-beta6\AndroidManifest.xml:5:5-44
+MERGED from [com.google.mlkit:text-recognition-bundled-common:16.0.0-beta6] C:\Users\csulb\.gradle\caches\8.10.2\transforms\378f3bc97d9c5fd1ab1a1b7369bd5b0d\transformed\jetified-text-recognition-bundled-common-16.0.0-beta6\AndroidManifest.xml:5:5-44
+MERGED from [com.google.mlkit:text-recognition-bundled-common:16.0.0-beta6] C:\Users\csulb\.gradle\caches\8.10.2\transforms\378f3bc97d9c5fd1ab1a1b7369bd5b0d\transformed\jetified-text-recognition-bundled-common-16.0.0-beta6\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\4db834ce90fc25246276ee7f2b3a26de\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.1\AndroidManifest.xml:6:5-44
+MERGED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\4db834ce90fc25246276ee7f2b3a26de\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.1\AndroidManifest.xml:6:5-44
+MERGED from [com.google.mlkit:barcode-scanning-common:17.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\2e5db330d9fa486b75556b2f53cb9b78\transformed\jetified-barcode-scanning-common-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.mlkit:barcode-scanning-common:17.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\2e5db330d9fa486b75556b2f53cb9b78\transformed\jetified-barcode-scanning-common-17.0.0\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-mlkit-text-recognition:18.0.2] C:\Users\csulb\.gradle\caches\8.10.2\transforms\c37a9cb03f2586e2ee9143a089584220\transformed\jetified-play-services-mlkit-text-recognition-18.0.2\AndroidManifest.xml:6:5-44
+MERGED from [com.google.android.gms:play-services-mlkit-text-recognition:18.0.2] C:\Users\csulb\.gradle\caches\8.10.2\transforms\c37a9cb03f2586e2ee9143a089584220\transformed\jetified-play-services-mlkit-text-recognition-18.0.2\AndroidManifest.xml:6:5-44
+MERGED from [com.google.android.gms:play-services-mlkit-text-recognition-common:18.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\bba999dc2db4672797ad0f897fbf9b04\transformed\jetified-play-services-mlkit-text-recognition-common-18.0.0\AndroidManifest.xml:6:5-44
+MERGED from [com.google.android.gms:play-services-mlkit-text-recognition-common:18.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\bba999dc2db4672797ad0f897fbf9b04\transformed\jetified-play-services-mlkit-text-recognition-common-18.0.0\AndroidManifest.xml:6:5-44
+MERGED from [com.google.mlkit:vision-common:17.3.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\a05b5895d4441831cef9203768ec4801\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:6:5-44
+MERGED from [com.google.mlkit:vision-common:17.3.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\a05b5895d4441831cef9203768ec4801\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:6:5-44
 MERGED from [com.google.firebase:firebase-database:21.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\79b3d919b76c49dd55792c935cbb2444\transformed\jetified-firebase-database-21.0.0\AndroidManifest.xml:18:5-44
 MERGED from [com.google.firebase:firebase-database:21.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\79b3d919b76c49dd55792c935cbb2444\transformed\jetified-firebase-database-21.0.0\AndroidManifest.xml:18:5-44
 MERGED from [com.google.firebase:firebase-messaging-ktx:24.1.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\d080230a66ff6b581f66e9f952310808\transformed\jetified-firebase-messaging-ktx-24.1.1\AndroidManifest.xml:20:5-44
@@ -268,12 +302,6 @@ MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] C:\Users\csulb\.g
 MERGED from [com.google.firebase:firebase-auth-interop:20.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\ce52788a58cccaeb8e26ccb3742a5810\transformed\jetified-firebase-auth-interop-20.0.0\AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-common:21.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\f84ab3ff6a97e53fb3163820143e7e79\transformed\jetified-firebase-common-21.0.0\AndroidManifest.xml:19:5-44
 MERGED from [com.google.firebase:firebase-common:21.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\f84ab3ff6a97e53fb3163820143e7e79\transformed\jetified-firebase-common-21.0.0\AndroidManifest.xml:19:5-44
-MERGED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\4db834ce90fc25246276ee7f2b3a26de\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.1\AndroidManifest.xml:6:5-44
-MERGED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\4db834ce90fc25246276ee7f2b3a26de\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.1\AndroidManifest.xml:6:5-44
-MERGED from [com.google.mlkit:barcode-scanning-common:17.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\2e5db330d9fa486b75556b2f53cb9b78\transformed\jetified-barcode-scanning-common-17.0.0\AndroidManifest.xml:5:5-44
-MERGED from [com.google.mlkit:barcode-scanning-common:17.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\2e5db330d9fa486b75556b2f53cb9b78\transformed\jetified-barcode-scanning-common-17.0.0\AndroidManifest.xml:5:5-44
-MERGED from [com.google.mlkit:vision-common:17.3.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\a05b5895d4441831cef9203768ec4801\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:6:5-44
-MERGED from [com.google.mlkit:vision-common:17.3.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\a05b5895d4441831cef9203768ec4801\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:6:5-44
 MERGED from [com.google.mlkit:common:18.11.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\eb2477fd659c6578bc869f4d6edf4d2b\transformed\jetified-common-18.11.0\AndroidManifest.xml:6:5-44
 MERGED from [com.google.mlkit:common:18.11.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\eb2477fd659c6578bc869f4d6edf4d2b\transformed\jetified-common-18.11.0\AndroidManifest.xml:6:5-44
 MERGED from [androidx.credentials:credentials:1.2.0-rc01] C:\Users\csulb\.gradle\caches\8.10.2\transforms\c9da39af860cbc6bfc2bc363bc8cb6b5\transformed\jetified-credentials-1.2.0-rc01\AndroidManifest.xml:5:5-44
@@ -308,6 +336,12 @@ MERGED from [androidx.window:window:1.2.0] C:\Users\csulb\.gradle\caches\8.10.2\
 MERGED from [androidx.window:window:1.2.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\5093ab42d2307deb2d7ac0b7f5718c38\transformed\jetified-window-1.2.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.window:window-java:1.2.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\c1f85211ae6978d0218d51595a7f7e62\transformed\jetified-window-java-1.2.0\AndroidManifest.xml:19:5-44
 MERGED from [androidx.window:window-java:1.2.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\c1f85211ae6978d0218d51595a7f7e62\transformed\jetified-window-java-1.2.0\AndroidManifest.xml:19:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.7.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\ebeb29d7113d60e59d5e0acf92f847f3\transformed\jetified-lifecycle-livedata-core-ktx-2.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.7.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\ebeb29d7113d60e59d5e0acf92f847f3\transformed\jetified-lifecycle-livedata-core-ktx-2.7.0\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\e2e21678784b3eef6b33f576b1691a56\transformed\lifecycle-livedata-core-2.7.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\e2e21678784b3eef6b33f576b1691a56\transformed\lifecycle-livedata-core-2.7.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\c7156a54e8f0502a1f8f57797d8b3e6e\transformed\jetified-lifecycle-viewmodel-savedstate-2.7.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\c7156a54e8f0502a1f8f57797d8b3e6e\transformed\jetified-lifecycle-viewmodel-savedstate-2.7.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-stats:17.0.2] C:\Users\csulb\.gradle\caches\8.10.2\transforms\b426ae45ba34699527b81c12c814bb78\transformed\jetified-play-services-stats-17.0.2\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.gms:play-services-stats:17.0.2] C:\Users\csulb\.gradle\caches\8.10.2\transforms\b426ae45ba34699527b81c12c814bb78\transformed\jetified-play-services-stats-17.0.2\AndroidManifest.xml:5:5-44
 MERGED from [androidx.legacy:legacy-support-core-utils:1.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\6d6ee565ab495ccfff8140c2f79bcdec\transformed\legacy-support-core-utils-1.0.0\AndroidManifest.xml:20:5-44
@@ -318,16 +352,8 @@ MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\csulb\.gradl
 MERGED from [androidx.appcompat:appcompat-resources:1.6.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\a12a090674da1baef97900c09c2e9654\transformed\jetified-appcompat-resources-1.6.1\AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat:1.6.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\67e431d42222568371fff0afd22bbdc6\transformed\appcompat-1.6.1\AndroidManifest.xml:20:5-44
 MERGED from [androidx.appcompat:appcompat:1.6.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\67e431d42222568371fff0afd22bbdc6\transformed\appcompat-1.6.1\AndroidManifest.xml:20:5-44
-MERGED from [androidx.activity:activity:1.8.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\13dd610fda78ecd8ad3daad9b8195d7e\transformed\jetified-activity-1.8.1\AndroidManifest.xml:20:5-44
-MERGED from [androidx.activity:activity:1.8.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\13dd610fda78ecd8ad3daad9b8195d7e\transformed\jetified-activity-1.8.1\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.7.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\ebeb29d7113d60e59d5e0acf92f847f3\transformed\jetified-lifecycle-livedata-core-ktx-2.7.0\AndroidManifest.xml:5:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata-core-ktx:2.7.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\ebeb29d7113d60e59d5e0acf92f847f3\transformed\jetified-lifecycle-livedata-core-ktx-2.7.0\AndroidManifest.xml:5:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\c7156a54e8f0502a1f8f57797d8b3e6e\transformed\jetified-lifecycle-viewmodel-savedstate-2.7.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.7.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\c7156a54e8f0502a1f8f57797d8b3e6e\transformed\jetified-lifecycle-viewmodel-savedstate-2.7.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.7.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\1b91be3af319ede480d7185430690ee1\transformed\lifecycle-viewmodel-2.7.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.7.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\1b91be3af319ede480d7185430690ee1\transformed\lifecycle-viewmodel-2.7.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\e2e21678784b3eef6b33f576b1691a56\transformed\lifecycle-livedata-core-2.7.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.7.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\e2e21678784b3eef6b33f576b1691a56\transformed\lifecycle-livedata-core-2.7.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.7.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\e0eede8414d1ee0e5f236daeb1a2e59a\transformed\lifecycle-livedata-2.7.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.7.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\e0eede8414d1ee0e5f236daeb1a2e59a\transformed\lifecycle-livedata-2.7.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.firebase:firebase-installations-interop:17.1.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\277aa05e63c0582e9a6c0fb9811696d7\transformed\jetified-firebase-installations-interop-17.1.1\AndroidManifest.xml:17:5-44
@@ -340,6 +366,8 @@ MERGED from [com.google.android.gms:play-services-basement:18.4.0] C:\Users\csul
 MERGED from [com.google.android.gms:play-services-basement:18.4.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\5568a35fadd1ad6d1c703f16a16e5540\transformed\jetified-play-services-basement-18.4.0\AndroidManifest.xml:3:5-44
 MERGED from [androidx.fragment:fragment:1.7.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\55520e4df2220e27f13f0bbb7467d11a\transformed\fragment-1.7.1\AndroidManifest.xml:5:5-44
 MERGED from [androidx.fragment:fragment:1.7.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\55520e4df2220e27f13f0bbb7467d11a\transformed\fragment-1.7.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.activity:activity:1.9.3] C:\Users\csulb\.gradle\caches\8.10.2\transforms\a70ddd560199940b45ffc1a1c4db7f79\transformed\jetified-activity-1.9.3\AndroidManifest.xml:20:5-44
+MERGED from [androidx.activity:activity:1.9.3] C:\Users\csulb\.gradle\caches\8.10.2\transforms\a70ddd560199940b45ffc1a1c4db7f79\transformed\jetified-activity-1.9.3\AndroidManifest.xml:20:5-44
 MERGED from [androidx.browser:browser:1.4.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\f8742dbdd8ad548bbf5dde49a0ea9a7d\transformed\browser-1.4.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.browser:browser:1.4.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\f8742dbdd8ad548bbf5dde49a0ea9a7d\transformed\browser-1.4.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\ddd5e7b38041965968ff0c456e5ef322\transformed\viewpager-1.0.0\AndroidManifest.xml:20:5-44
@@ -368,14 +396,14 @@ MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\csulb\.gradle\caches
 MERGED from [androidx.savedstate:savedstate:1.2.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\b3d51a44ab6b56289d4858158a1ad6dd\transformed\jetified-savedstate-1.2.1\AndroidManifest.xml:20:5-44
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.1.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\2a0d5794843604364eca179d4eb7b8a1\transformed\localbroadcastmanager-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.1.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\2a0d5794843604364eca179d4eb7b8a1\transformed\localbroadcastmanager-1.1.0\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.7] C:\Users\csulb\.gradle\caches\8.10.2\transforms\3b98555939aa5eea06aa9fccf2cf9525\transformed\exifinterface-1.3.7\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.exifinterface:exifinterface:1.3.7] C:\Users\csulb\.gradle\caches\8.10.2\transforms\3b98555939aa5eea06aa9fccf2cf9525\transformed\exifinterface-1.3.7\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:21:5-44
 MERGED from [androidx.profileinstaller:profileinstaller:1.3.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\5f7dcf6815bacc3ae7f099ba801348de\transformed\jetified-profileinstaller-1.3.1\AndroidManifest.xml:21:5-44
 MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\e0d9d3675465ff69d847e2f781f20c61\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
 MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\e0d9d3675465ff69d847e2f781f20c61\transformed\jetified-startup-runtime-1.1.1\AndroidManifest.xml:21:5-23:41
 MERGED from [androidx.tracing:tracing:1.2.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\285b6d6abe2dd4ba9515886e610a7341\transformed\jetified-tracing-1.2.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.tracing:tracing:1.2.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\285b6d6abe2dd4ba9515886e610a7341\transformed\jetified-tracing-1.2.0\AndroidManifest.xml:20:5-44
-MERGED from [com.google.firebase:firebase-components:18.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\30d6dde8f6241b92bb3c0336da77a097\transformed\jetified-firebase-components-18.0.0\AndroidManifest.xml:18:5-44
-MERGED from [com.google.firebase:firebase-components:18.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\30d6dde8f6241b92bb3c0336da77a097\transformed\jetified-firebase-components-18.0.0\AndroidManifest.xml:18:5-44
 MERGED from [com.google.firebase:firebase-datatransport:18.2.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\f74e7aec8d7941409c0ca3891ecaa09e\transformed\jetified-firebase-datatransport-18.2.0\AndroidManifest.xml:18:5-44
 MERGED from [com.google.firebase:firebase-datatransport:18.2.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\f74e7aec8d7941409c0ca3891ecaa09e\transformed\jetified-firebase-datatransport-18.2.0\AndroidManifest.xml:18:5-44
 MERGED from [com.google.android.datatransport:transport-backend-cct:3.1.9] C:\Users\csulb\.gradle\caches\8.10.2\transforms\7f08bc2171c491c5055f20402eb4a550\transformed\jetified-transport-backend-cct-3.1.9\AndroidManifest.xml:18:5-20:41
@@ -384,16 +412,16 @@ MERGED from [com.google.firebase:firebase-encoders-json:18.0.0] C:\Users\csulb\.
 MERGED from [com.google.firebase:firebase-encoders-json:18.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\7d0d33ecaece8d17a3b79a6bcd1ce82f\transformed\jetified-firebase-encoders-json-18.0.0\AndroidManifest.xml:19:5-21:41
 MERGED from [com.google.android.datatransport:transport-runtime:3.1.9] C:\Users\csulb\.gradle\caches\8.10.2\transforms\5838d9648eb8f6a5577a2ee0f60df4e7\transformed\jetified-transport-runtime-3.1.9\AndroidManifest.xml:18:5-20:41
 MERGED from [com.google.android.datatransport:transport-runtime:3.1.9] C:\Users\csulb\.gradle\caches\8.10.2\transforms\5838d9648eb8f6a5577a2ee0f60df4e7\transformed\jetified-transport-runtime-3.1.9\AndroidManifest.xml:18:5-20:41
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\ccaaf8ba0ff17d4bbcf5fc9064ae7a64\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\ccaaf8ba0ff17d4bbcf5fc9064ae7a64\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\92a2169b5b2674c8bbe10e1b1d80da0f\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\92a2169b5b2674c8bbe10e1b1d80da0f\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
+MERGED from [com.google.firebase:firebase-components:18.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\30d6dde8f6241b92bb3c0336da77a097\transformed\jetified-firebase-components-18.0.0\AndroidManifest.xml:18:5-44
+MERGED from [com.google.firebase:firebase-components:18.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\30d6dde8f6241b92bb3c0336da77a097\transformed\jetified-firebase-components-18.0.0\AndroidManifest.xml:18:5-44
 MERGED from [com.google.android.datatransport:transport-api:3.1.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\881c4abfce54f2ad198c7660c5ae4450\transformed\jetified-transport-api-3.1.0\AndroidManifest.xml:18:5-44
 MERGED from [com.google.android.datatransport:transport-api:3.1.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\881c4abfce54f2ad198c7660c5ae4450\transformed\jetified-transport-api-3.1.0\AndroidManifest.xml:18:5-44
 MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\ff849810dfe34a0ab790c402787c149e\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.arch.core:core-runtime:2.2.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\ff849810dfe34a0ab790c402787c149e\transformed\core-runtime-2.2.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\92a2169b5b2674c8bbe10e1b1d80da0f\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\92a2169b5b2674c8bbe10e1b1d80da0f\transformed\versionedparcelable-1.1.1\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\ccaaf8ba0ff17d4bbcf5fc9064ae7a64\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\ccaaf8ba0ff17d4bbcf5fc9064ae7a64\transformed\interpolator-1.0.0\AndroidManifest.xml:20:5-44
-MERGED from [androidx.exifinterface:exifinterface:1.3.2] C:\Users\csulb\.gradle\caches\8.10.2\transforms\4634cd8ce705c2466d5626ee92bbbe49\transformed\exifinterface-1.3.2\AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.exifinterface:exifinterface:1.3.2] C:\Users\csulb\.gradle\caches\8.10.2\transforms\4634cd8ce705c2466d5626ee92bbbe49\transformed\exifinterface-1.3.2\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.window.extensions.core:core:1.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\47506b70b93177473c53f4d5d7e77c91\transformed\jetified-core-1.0.0\AndroidManifest.xml:5:5-44
 MERGED from [androidx.window.extensions.core:core:1.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\47506b70b93177473c53f4d5d7e77c91\transformed\jetified-core-1.0.0\AndroidManifest.xml:5:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\e4e9d33e8be7718e1e9997a4b8a9b898\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44
@@ -562,6 +590,44 @@ ADDED from [:firebase_core] C:\Users\csulb\Documents\GitHub\NutriLens\build\fire
 		ADDED from [:firebase_core] C:\Users\csulb\Documents\GitHub\NutriLens\build\firebase_core\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:11:17-82
 	android:name
 		ADDED from [:firebase_core] C:\Users\csulb\Documents\GitHub\NutriLens\build\firebase_core\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:10:17-124
+provider#io.flutter.plugins.imagepicker.ImagePickerFileProvider
+ADDED from [:image_picker_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:9:9-17:20
+	android:grantUriPermissions
+		ADDED from [:image_picker_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:13:13-47
+	android:authorities
+		ADDED from [:image_picker_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:11:13-74
+	android:exported
+		ADDED from [:image_picker_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:12:13-37
+	android:name
+		ADDED from [:image_picker_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:10:13-82
+meta-data#android.support.FILE_PROVIDER_PATHS
+ADDED from [:image_picker_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:14:13-16:75
+	android:resource
+		ADDED from [:image_picker_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:16:17-72
+	android:name
+		ADDED from [:image_picker_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:15:17-67
+service#com.google.android.gms.metadata.ModuleDependencies
+ADDED from [:image_picker_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:19:9-31:19
+	android:enabled
+		ADDED from [:image_picker_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:21:13-36
+	android:exported
+		ADDED from [:image_picker_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:22:13-37
+	tools:ignore
+		ADDED from [:image_picker_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:23:13-40
+	android:name
+		ADDED from [:image_picker_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:20:13-78
+intent-filter#action:name:com.google.android.gms.metadata.MODULE_DEPENDENCIES
+ADDED from [:image_picker_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:24:13-26:29
+action#com.google.android.gms.metadata.MODULE_DEPENDENCIES
+ADDED from [:image_picker_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:25:17-94
+	android:name
+		ADDED from [:image_picker_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:25:25-91
+meta-data#photopicker_activity:0:required
+ADDED from [:image_picker_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:28:13-30:36
+	android:value
+		ADDED from [:image_picker_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:30:17-33
+	android:name
+		ADDED from [:image_picker_android] C:\Users\csulb\Documents\GitHub\NutriLens\build\image_picker_android\intermediates\merged_manifest\debug\processDebugManifest\AndroidManifest.xml:29:17-63
 service#androidx.camera.core.impl.MetadataHolderService
 ADDED from [androidx.camera:camera-core:1.3.4] C:\Users\csulb\.gradle\caches\8.10.2\transforms\8bd470afad6cd272cc0b2e6bbdacbe98\transformed\jetified-camera-core-1.3.4\AndroidManifest.xml:29:9-33:78
 MERGED from [androidx.camera:camera-camera2:1.3.4] C:\Users\csulb\.gradle\caches\8.10.2\transforms\0363abd935bb9255bb75e9082ff9e5f3\transformed\jetified-camera-camera2-1.3.4\AndroidManifest.xml:24:9-33:19
@@ -626,6 +692,40 @@ ADDED from [com.google.firebase:firebase-auth:23.2.0] C:\Users\csulb\.gradle\cac
 		ADDED from [com.google.firebase:firebase-auth:23.2.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\05e8620cc5f010181c02988a158c637d\transformed\jetified-firebase-auth-23.2.0\AndroidManifest.xml:71:17-82
 	android:name
 		ADDED from [com.google.firebase:firebase-auth:23.2.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\05e8620cc5f010181c02988a158c637d\transformed\jetified-firebase-auth-23.2.0\AndroidManifest.xml:70:17-109
+service#com.google.mlkit.common.internal.MlKitComponentDiscoveryService
+ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\4db834ce90fc25246276ee7f2b3a26de\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.1\AndroidManifest.xml:9:9-15:19
+MERGED from [com.google.android.gms:play-services-mlkit-text-recognition-common:18.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\bba999dc2db4672797ad0f897fbf9b04\transformed\jetified-play-services-mlkit-text-recognition-common-18.0.0\AndroidManifest.xml:9:9-15:19
+MERGED from [com.google.android.gms:play-services-mlkit-text-recognition-common:18.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\bba999dc2db4672797ad0f897fbf9b04\transformed\jetified-play-services-mlkit-text-recognition-common-18.0.0\AndroidManifest.xml:9:9-15:19
+MERGED from [com.google.mlkit:vision-common:17.3.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\a05b5895d4441831cef9203768ec4801\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:9:9-15:19
+MERGED from [com.google.mlkit:vision-common:17.3.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\a05b5895d4441831cef9203768ec4801\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:9:9-15:19
+MERGED from [com.google.mlkit:common:18.11.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\eb2477fd659c6578bc869f4d6edf4d2b\transformed\jetified-common-18.11.0\AndroidManifest.xml:15:9-23:19
+MERGED from [com.google.mlkit:common:18.11.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\eb2477fd659c6578bc869f4d6edf4d2b\transformed\jetified-common-18.11.0\AndroidManifest.xml:15:9-23:19
+	android:exported
+		ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\4db834ce90fc25246276ee7f2b3a26de\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.1\AndroidManifest.xml:11:13-37
+	tools:targetApi
+		ADDED from [com.google.mlkit:common:18.11.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\eb2477fd659c6578bc869f4d6edf4d2b\transformed\jetified-common-18.11.0\AndroidManifest.xml:19:13-32
+	android:directBootAware
+		ADDED from [com.google.mlkit:common:18.11.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\eb2477fd659c6578bc869f4d6edf4d2b\transformed\jetified-common-18.11.0\AndroidManifest.xml:17:13-43
+	android:name
+		ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\4db834ce90fc25246276ee7f2b3a26de\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.1\AndroidManifest.xml:10:13-91
+meta-data#com.google.firebase.components:com.google.mlkit.vision.barcode.internal.BarcodeRegistrar
+ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\4db834ce90fc25246276ee7f2b3a26de\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.1\AndroidManifest.xml:12:13-14:85
+	android:value
+		ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\4db834ce90fc25246276ee7f2b3a26de\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.1\AndroidManifest.xml:14:17-82
+	android:name
+		ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\4db834ce90fc25246276ee7f2b3a26de\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.1\AndroidManifest.xml:13:17-120
+meta-data#com.google.firebase.components:com.google.mlkit.vision.text.internal.TextRegistrar
+ADDED from [com.google.android.gms:play-services-mlkit-text-recognition-common:18.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\bba999dc2db4672797ad0f897fbf9b04\transformed\jetified-play-services-mlkit-text-recognition-common-18.0.0\AndroidManifest.xml:12:13-14:85
+	android:value
+		ADDED from [com.google.android.gms:play-services-mlkit-text-recognition-common:18.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\bba999dc2db4672797ad0f897fbf9b04\transformed\jetified-play-services-mlkit-text-recognition-common-18.0.0\AndroidManifest.xml:14:17-82
+	android:name
+		ADDED from [com.google.android.gms:play-services-mlkit-text-recognition-common:18.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\bba999dc2db4672797ad0f897fbf9b04\transformed\jetified-play-services-mlkit-text-recognition-common-18.0.0\AndroidManifest.xml:13:17-114
+meta-data#com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar
+ADDED from [com.google.mlkit:vision-common:17.3.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\a05b5895d4441831cef9203768ec4801\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:12:13-14:85
+	android:value
+		ADDED from [com.google.mlkit:vision-common:17.3.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\a05b5895d4441831cef9203768ec4801\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:14:17-82
+	android:name
+		ADDED from [com.google.mlkit:vision-common:17.3.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\a05b5895d4441831cef9203768ec4801\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:13:17-124
 meta-data#com.google.firebase.components:com.google.firebase.database.FirebaseDatabaseKtxRegistrar
 ADDED from [com.google.firebase:firebase-database:21.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\79b3d919b76c49dd55792c935cbb2444\transformed\jetified-firebase-database-21.0.0\AndroidManifest.xml:29:13-31:85
 	android:value
@@ -720,32 +820,6 @@ ADDED from [com.google.firebase:firebase-common:21.0.0] C:\Users\csulb\.gradle\c
 		ADDED from [com.google.firebase:firebase-common:21.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\f84ab3ff6a97e53fb3163820143e7e79\transformed\jetified-firebase-common-21.0.0\AndroidManifest.xml:37:17-82
 	android:name
 		ADDED from [com.google.firebase:firebase-common:21.0.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\f84ab3ff6a97e53fb3163820143e7e79\transformed\jetified-firebase-common-21.0.0\AndroidManifest.xml:36:17-109
-service#com.google.mlkit.common.internal.MlKitComponentDiscoveryService
-ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\4db834ce90fc25246276ee7f2b3a26de\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.1\AndroidManifest.xml:9:9-15:19
-MERGED from [com.google.mlkit:vision-common:17.3.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\a05b5895d4441831cef9203768ec4801\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:9:9-15:19
-MERGED from [com.google.mlkit:vision-common:17.3.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\a05b5895d4441831cef9203768ec4801\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:9:9-15:19
-MERGED from [com.google.mlkit:common:18.11.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\eb2477fd659c6578bc869f4d6edf4d2b\transformed\jetified-common-18.11.0\AndroidManifest.xml:15:9-23:19
-MERGED from [com.google.mlkit:common:18.11.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\eb2477fd659c6578bc869f4d6edf4d2b\transformed\jetified-common-18.11.0\AndroidManifest.xml:15:9-23:19
-	android:exported
-		ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\4db834ce90fc25246276ee7f2b3a26de\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.1\AndroidManifest.xml:11:13-37
-	tools:targetApi
-		ADDED from [com.google.mlkit:common:18.11.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\eb2477fd659c6578bc869f4d6edf4d2b\transformed\jetified-common-18.11.0\AndroidManifest.xml:19:13-32
-	android:directBootAware
-		ADDED from [com.google.mlkit:common:18.11.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\eb2477fd659c6578bc869f4d6edf4d2b\transformed\jetified-common-18.11.0\AndroidManifest.xml:17:13-43
-	android:name
-		ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\4db834ce90fc25246276ee7f2b3a26de\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.1\AndroidManifest.xml:10:13-91
-meta-data#com.google.firebase.components:com.google.mlkit.vision.barcode.internal.BarcodeRegistrar
-ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\4db834ce90fc25246276ee7f2b3a26de\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.1\AndroidManifest.xml:12:13-14:85
-	android:value
-		ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\4db834ce90fc25246276ee7f2b3a26de\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.1\AndroidManifest.xml:14:17-82
-	android:name
-		ADDED from [com.google.android.gms:play-services-mlkit-barcode-scanning:18.3.1] C:\Users\csulb\.gradle\caches\8.10.2\transforms\4db834ce90fc25246276ee7f2b3a26de\transformed\jetified-play-services-mlkit-barcode-scanning-18.3.1\AndroidManifest.xml:13:17-120
-meta-data#com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar
-ADDED from [com.google.mlkit:vision-common:17.3.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\a05b5895d4441831cef9203768ec4801\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:12:13-14:85
-	android:value
-		ADDED from [com.google.mlkit:vision-common:17.3.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\a05b5895d4441831cef9203768ec4801\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:14:17-82
-	android:name
-		ADDED from [com.google.mlkit:vision-common:17.3.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\a05b5895d4441831cef9203768ec4801\transformed\jetified-vision-common-17.3.0\AndroidManifest.xml:13:17-124
 provider#com.google.mlkit.common.internal.MlKitInitProvider
 ADDED from [com.google.mlkit:common:18.11.0] C:\Users\csulb\.gradle\caches\8.10.2\transforms\eb2477fd659c6578bc869f4d6edf4d2b\transformed\jetified-common-18.11.0\AndroidManifest.xml:9:9-13:38
 	android:authorities

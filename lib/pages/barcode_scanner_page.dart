@@ -5,7 +5,8 @@ import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:http/http.dart' as http;
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:nutrilensfire/pages/tracker_page.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 
 class BarcodeScannerPage extends StatefulWidget {
   const BarcodeScannerPage({super.key});
@@ -24,6 +25,31 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
         context,
         MaterialPageRoute(
           builder: (context) => ProductDetailsPage(barcode: code),
+        ),
+      );
+    }
+  }
+
+  Future<void> _pickImageAndRecognizeText() async {
+    final picker = ImagePicker();
+    final imageFile = await picker.pickImage(source: ImageSource.camera);
+    if (imageFile != null) {
+      final inputImage = InputImage.fromFilePath(imageFile.path);
+      final textRecognizer = TextRecognizer(script: TextRecognitionScript.latin);
+      final recognizedText = await textRecognizer.processImage(inputImage);
+      textRecognizer.close();
+
+      showDialog(
+        context: context,
+        builder: (_) => AlertDialog(
+          title: const Text("Recognized Text"),
+          content: SingleChildScrollView(child: Text(recognizedText.text)),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text("Close"),
+            )
+          ],
         ),
       );
     }
@@ -69,22 +95,30 @@ class _BarcodeScannerPageState extends State<BarcodeScannerPage> {
                 ],
               )
             else
-              Center(
-                child: ElevatedButton.icon(
-                  icon: const Icon(Icons.qr_code_scanner),
-                  label: const Text("Open Camera Scanner"),
-                  onPressed: () async {
-                    final scannedCode = await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const BarcodeScannerCameraPage(),
-                      ),
-                    );
-                    if (scannedCode != null && scannedCode != "-1") {
-                      _handleBarcode(scannedCode);
-                    }
-                  },
-                ),
+              Column(
+                children: [
+                  ElevatedButton.icon(
+                    icon: const Icon(Icons.qr_code_scanner),
+                    label: const Text("Open Camera Scanner"),
+                    onPressed: () async {
+                      final scannedCode = await Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const BarcodeScannerCameraPage(),
+                        ),
+                      );
+                      if (scannedCode != null && scannedCode != "-1") {
+                        _handleBarcode(scannedCode);
+                      }
+                    },
+                  ),
+                  const SizedBox(height: 12),
+                  ElevatedButton.icon(
+                    icon: const Icon(Icons.image),
+                    label: const Text("Image to Text (OCR)"),
+                    onPressed: _pickImageAndRecognizeText,
+                  ),
+                ],
               ),
           ],
         ),
@@ -151,7 +185,10 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
   Map<String, dynamic>? productData;
   String errorMessage = "";
 
-  final String translationUrl = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=en&dt=t&q=';
+  final List<String> translationUrls = [
+    'https://libretranslate.de/translate',
+    'https://translate.argosopentech.com/translate'
+  ];
 
   @override
   void initState() {
@@ -161,21 +198,34 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
 
   Future<String> translateToEnglish(String text) async {
     final cacheBox = await Hive.openBox('translationCache');
-    if (cacheBox.containsKey(text)) return cacheBox.get(text);
+    if (cacheBox.containsKey(text)) {
+      return cacheBox.get(text);
+    }
 
-    final encoded = Uri.encodeComponent(text);
-    final url = '$translationUrl$encoded';
+    for (final url in translationUrls) {
+      try {
+        final response = await http
+            .post(
+          Uri.parse(url),
+          headers: {'Content-Type': 'application/json'},
+          body: jsonEncode({
+            'q': text,
+            'source': 'auto',
+            'target': 'en',
+            'format': 'text',
+          }),
+        )
+            .timeout(const Duration(seconds: 5));
 
-    try {
-      final response = await http.get(Uri.parse(url)).timeout(const Duration(seconds: 5));
-      if (response.statusCode == 200) {
-        final result = jsonDecode(response.body);
-        final translated = result[0][0][0];
-        cacheBox.put(text, translated);
-        return translated;
+        if (response.statusCode == 200) {
+          final data = jsonDecode(response.body);
+          final translated = data['translatedText'] ?? text;
+          cacheBox.put(text, translated);
+          return translated;
+        }
+      } catch (e) {
+        debugPrint("❌ Translation error for '$text': $e using $url");
       }
-    } catch (e) {
-      debugPrint("❌ Translation error for '$text': $e");
     }
 
     return text;
@@ -272,23 +322,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
               productData?['product_name'] ?? "Unnamed Product",
               style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 8),
-            Center(
-              child: ElevatedButton.icon(
-                  label: const Text("Add to Calorie Count"),
-                  onPressed: () async {
-                    barcodeAPI(widget.barcode);
-                    await Future.delayed(const Duration(seconds: 1));
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => TrackerPage(),
-                      ),
-                    );
-                  }
-              ),
-            ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 16),
             const Text("Ingredients:", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             const SizedBox(height: 8),
             if (isTranslating)
@@ -324,7 +358,6 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 },
               ),
             ),
-
           ],
         ),
       ),
