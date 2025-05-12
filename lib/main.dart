@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'services/notification_service.dart';
@@ -22,16 +23,18 @@ import 'pages/glossary_page.dart';
 import 'pages/deleted_notifications_page.dart';
 import 'services/api_service.dart';
 import 'pages/deals_page.dart';
-import 'pages/barcode_scanner_page.dart';
+import 'pages/barcode_scanner_page.dart'; // <-- Your scanner page
 import 'pages/report_issue_page.dart';
 import 'pages/add_ingredients_page.dart';
-
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
+  await Hive.initFlutter();
+  await Hive.openBox('productCache');
+  await Hive.openBox('translationCache');
+  await Hive.openBox('settingsBox');
   // Fetch recalls when the app starts
   ApiService().fetchFDARecalls();
 
@@ -57,29 +60,59 @@ class NutriLensApp extends StatelessWidget {
       navigatorKey: notificationService.navigatorKey,
       initialRoute: '/',
       routes: {
-        '/': (context) => LoginPage(),
-        '/home': (context) => main_home.HomePage(),
-        '/barcode': (context) => BarcodeScannerPage(),
-        '/settings': (context) => SettingsPage(),
-        '/search': (context) => SearchPage(),
-        '/notifications': (context) => NotificationsPage(),
-        '/language': (context) => LanguagePage(),
-        '/theme': (context) => ThemePage(),
-        '/dietary_preferences': (context) => DietaryPreferencesPage(),
-        '/user_guide': (context) => UserGuidePage(),
-        '/support': (context) => SupportPage(),
-        '/change_password': (context) => ChangePasswordPage(),
-        '/profile': (context) => ProfilePage(),
-        '/ingredients_profile': (context) => IngredientsProfilePage(),
+        '/': (context) =>  LoginPage(),
+        '/home': (context) => const CustomHomePage(), // ← Modified version
+        '/barcode': (context) => const BarcodeScannerPage(),
+        '/settings': (context) =>  SettingsPage(),
+        '/search': (context) => const SearchPage(),
+        '/notifications': (context) =>  NotificationsPage(),
+        '/language': (context) => const LanguagePage(),
+        '/theme': (context) => const ThemePage(),
+        '/dietary_preferences': (context) => const DietaryPreferencesPage(),
+        '/user_guide': (context) => const UserGuidePage(),
+        '/support': (context) => const SupportPage(),
+        '/change_password': (context) => const ChangePasswordPage(),
+        '/profile': (context) => const ProfilePage(),
+        '/ingredients_profile': (context) => const IngredientsProfilePage(),
         '/calorie_goal': (context) => CalorieGoalPage(),
-        '/health_metrics': (context) => HealthMetricsPage(),
-        '/history_log': (context) => HistoryLogPage(),
-        '/glossary': (context) => GlossaryPage(),
+        '/health_metrics': (context) => const HealthMetricsPage(),
+        '/history_log': (context) => const HistoryLogPage(),
+        '/glossary': (context) => const GlossaryPage(),
         './deleted_notifications': (context) => DeletedNotificationsPage(),
-        '/deals': (context) => DealsPage(),
-        '/report_issue': (context) => ReportIssuePage(),
-        '/add_ingredients': (context) => AddIngredientsPage(),
+        '/deals': (context) => const DealsPage(),
+        '/report_issue': (context) => const ReportIssuePage(),
+        '/add_ingredients': (context) => const AddIngredientsPage(),
       },
+    );
+  }
+}
+
+class CustomHomePage extends StatelessWidget {
+  const CustomHomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('NutriLens Home'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.qr_code_scanner),
+            onPressed: () {
+              Navigator.pushNamed(context, '/barcode');
+            },
+          ),
+        ],
+      ),
+      body: Center(
+        child: ElevatedButton.icon(
+          icon: const Icon(Icons.qr_code),
+          label: const Text('Scan Barcode'),
+          onPressed: () {
+            Navigator.pushNamed(context, '/barcode');
+          },
+        ),
+      ),
     );
   }
 }
