@@ -69,6 +69,7 @@ class CalorieGoalPage extends StatelessWidget {
         child:
         Column(
         children: [
+          const SizedBox(height: 24),
           FutureBuilder(
             future: getCalorieGoal(),
             builder: (context, snapshot) {
@@ -82,17 +83,19 @@ class CalorieGoalPage extends StatelessWidget {
               }
               else {
                 return Text(
-                  'Current Calorie Goal : ${snapshot.data.toString()}'
+                  'Current Calorie Goal : ${snapshot.data.toString()}',
+                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 );
               }
             }
           ),
-          TextButton(
+          const SizedBox(height: 24),
+          ElevatedButton(
             onPressed: () {
-            inputCalorieGoal(context);
-          },
-          child: const Text('Add Calorie Goal'),
-      ),
+              inputCalorieGoal(context);
+            },
+            child: const Text("Change Calorie Goal"),
+          ),
     ])));
   }
 

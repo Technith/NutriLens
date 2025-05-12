@@ -51,31 +51,40 @@ class _ProfilePageState extends State<ProfilePage> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-
+                  const SizedBox(height: 8),
                   if (user != null) ...[
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (_) => ChangeEmail()));
-                      },
-                      child: const Text('Change Email'),
+                    Center(
+                      child: ElevatedButton.icon(
+                          label: const Text("Change Email"),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ChangeEmail(),
+                              ),
+                            );
+                          }
+                      ),
                     ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (_) => ChangePassword()));
-                      },
-                      child: const Text('Change Password'),
+                    const SizedBox(height: 8),
+                    Center(
+                      child: ElevatedButton.icon(
+                          label: const Text("Change Password"),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ChangePassword(),
+                              ),
+                            );
+                          }
+                      ),
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 8),
                     CircleAvatar(
                       radius: 50,
                       backgroundColor: Colors.grey.shade300,
                       child: const Icon(Icons.person, size: 50, color: Colors.white),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        // Future feature: set profile picture
-                      },
-                      child: const Text('Set Profile Picture'),
                     ),
                   ] else ...[
                     const SizedBox(height: 20),
@@ -96,7 +105,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       child: const Text("Sign in or Create an Account"),
                     ),
                   ],
-
+                  const SizedBox(height: 16),
                   if (user != null)
                     Expanded(
                       child: ListView(
@@ -104,7 +113,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           context: context,
                           tiles: [
                             ListTile(
-                              title: const Text('Calorie/Weight Goals'),
+                              title: const Text('Calorie Goal'),
                               onTap: () {
                                 Navigator.push(
                                   context,

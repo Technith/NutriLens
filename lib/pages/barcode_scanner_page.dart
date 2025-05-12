@@ -5,6 +5,7 @@ import 'package:mobile_scanner/mobile_scanner.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:http/http.dart' as http;
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:nutrilensfire/pages/tracker_page.dart';
 
 class BarcodeScannerPage extends StatefulWidget {
   const BarcodeScannerPage({super.key});
@@ -271,7 +272,23 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
               productData?['product_name'] ?? "Unnamed Product",
               style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
             ),
-            const SizedBox(height: 16),
+            const SizedBox(height: 8),
+            Center(
+              child: ElevatedButton.icon(
+                  label: const Text("Add to Calorie Count"),
+                  onPressed: () async {
+                    barcodeAPI(widget.barcode);
+                    await Future.delayed(const Duration(seconds: 1));
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => TrackerPage(),
+                      ),
+                    );
+                  }
+              ),
+            ),
+            const SizedBox(height: 8),
             const Text("Ingredients:", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             const SizedBox(height: 8),
             if (isTranslating)
@@ -307,6 +324,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                 },
               ),
             ),
+
           ],
         ),
       ),

@@ -9,6 +9,47 @@ import 'package:nutrilensfire/pages/calorie_goal_page.dart';
 import 'package:intl/intl.dart';
 import 'package:http/http.dart' as http;
 
+
+  void barcodeAPI(String barcodeInput) async {
+  // API Call
+  final apiUrl = "https://world.openfoodfacts.org/api/v2/product/$barcodeInput.json";
+  final response = await http.get(Uri.parse(apiUrl));
+  var nutritionData;
+
+  if (response.statusCode == 200) {
+    final decodedData = jsonDecode(response.body);
+    if (decodedData['status'] == 1) {
+      nutritionData = decodedData['product']['nutriments'];
+    }
+  }
+
+  void addMeal(String calorieInput, String proteinInput, String carbInput, String fatInput) async {
+    User? user = FirebaseAuth.instance.currentUser;
+    if (user != null) {
+      DatabaseReference ref = FirebaseDatabase.instance.ref("Users/${user.uid}/Meals");
+      String dateTime = DateFormat('yyyy-MM-dd_HH-mm-ss').format(DateTime.now());
+      await ref.update({
+        dateTime : {
+          "Calories": calorieInput,
+          "Protein (g)": proteinInput,
+          "Carbs (g)": carbInput,
+          "Fats (g)": fatInput
+        }
+      });
+    }
+  }
+
+  // Parse JSON data
+  String caloriesServing = '${nutritionData['energy-kcal_serving']}';
+  String carbsServing = '${nutritionData['carbohydrates_serving']}';
+  String fatServing = '${nutritionData['fat_serving']}';
+  String proteinServing = '${nutritionData['proteins_serving']}';
+
+  addMeal(caloriesServing, carbsServing, fatServing, proteinServing);
+}
+
+
+
 class TrackerPage extends StatelessWidget {
   final barcodeController = TextEditingController();
   final calorieController = TextEditingController();
@@ -180,17 +221,16 @@ class TrackerPage extends StatelessWidget {
             child:
             Column(
                 children: [
-                  TextButton(
-                    onPressed: () {
-                      inputMeal(context);
-                    },
-                    child: const Text('Add Meal'),
-                  ),
-                  TextButton(
-                    onPressed: () {
+                  ElevatedButton.icon(
+                      label: const Text("Add Meal Manual"),
+                      onPressed: () {
+                        inputMeal(context);
+                      }),
+                  ElevatedButton.icon(
+                      label: const Text("Add Meal Manual Barcode"),
+                      onPressed: () {
                       inputMealBarcode(context);
                     },
-                    child: const Text('Add Meal Barcode'),
                   ),
                   FutureBuilder(
                       future: getCalorieGoal(),
