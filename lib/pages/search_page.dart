@@ -3,6 +3,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
+import '../theme/theme_colors.dart';
 
 class SearchPage extends StatefulWidget {
   const SearchPage({super.key});
@@ -115,7 +116,7 @@ class _SearchPageState extends State<SearchPage> {
       children: _ingredients.map((e) => Text(
         '• $e',
         style: TextStyle(
-          color: _harmfulIngredients.contains(e) ? Colors.red : Colors.black,
+          color: _harmfulIngredients.contains(e) ? Colors.red : ThemeColor.textPrimary,
           fontWeight: _harmfulIngredients.contains(e) ? FontWeight.bold : FontWeight.normal,
         ),
       )).toList(),
@@ -125,7 +126,13 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('NutriLens Search')),
+      backgroundColor: ThemeColor.background,
+      appBar: AppBar(
+        title: const Text('NutriLens Search'),
+        backgroundColor: ThemeColor.background,
+        foregroundColor: ThemeColor.textPrimary,
+        elevation: 0,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -133,8 +140,10 @@ class _SearchPageState extends State<SearchPage> {
           children: [
             TextField(
               controller: _controller,
+              style: TextStyle(color: ThemeColor.textPrimary),
               decoration: InputDecoration(
                 hintText: 'Search for a product...',
+                hintStyle: TextStyle(color: ThemeColor.textSecondary),
                 suffixIcon: IconButton(
                   icon: const Icon(Icons.search),
                   onPressed: _searchProduct,
@@ -151,7 +160,10 @@ class _SearchPageState extends State<SearchPage> {
                   itemBuilder: (context, index) {
                     final suggestion = _filteredSuggestions[index];
                     return ListTile(
-                      title: Text(suggestion),
+                      title: Text(
+                        suggestion,
+                        style: TextStyle(color: ThemeColor.textPrimary), // 👈 Add this
+                      ),
                       onTap: () {
                         _controller.text = suggestion;
                         _searchProduct(suggestion);
@@ -179,9 +191,9 @@ class _SearchPageState extends State<SearchPage> {
                     borderRadius: BorderRadius.circular(20),
                   ),
                 ),
-                child: const Text(
+                child: Text(
                   "Full Glossary",
-                  style: TextStyle(color: Colors.white, fontSize: 16),
+                  style: TextStyle(color: ThemeColor.textPrimary, fontSize: 16),
                 ),
               ),
             ),
@@ -191,14 +203,18 @@ class _SearchPageState extends State<SearchPage> {
                   Navigator.pushNamed(context, '/add_ingredients');
                 },
                 style: ElevatedButton.styleFrom(
+                  backgroundColor: ThemeColor.secondary,
                   padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
                 ),
-                child: const Text(
+                child: Text(
                   "Add Ingredients",
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: ThemeColor.textSecondary, // ✅ valid here
+                  ),
                 ),
               ),
             ),
