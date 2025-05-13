@@ -590,7 +590,6 @@ class _GlossaryPageState extends State<GlossaryPage> {
                   ),
                 ),
 
-                // 👇 ADD THIS: Search Bar under medals
                 Padding(
                   padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
                   child: TextField(
