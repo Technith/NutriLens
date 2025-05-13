@@ -1,0 +1,75 @@
+# Flutter & Dart
+.dart_tool/
+.packages
+.pub-cache/
+.flutter-plugins
+.flutter-plugins-dependencies
+.melos_tool/
+
+# Flutter build outputs
+build/
+**/build/
+.flutter-*
+
+# Generated files
+*.iml
+*.ipr
+*.iws
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# iOS & macOS
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Flutter/Generated.xcconfig
+ios/Pods/
+ios/.symlinks/
+ios/Podfile.lock
+ios/Runner.xcworkspace/
+macos/Flutter/GeneratedPluginRegistrant.swift
+macos/Pods/
+macos/Podfile.lock
+macos/Runner.xcworkspace/
+
+# Android
+android/.gradle/
+android/.idea/
+android/local.properties
+android/app/debug
+android/app/profile
+android/app/release
+android/build/
+
+# Windows
+windows/flutter/ephemeral/
+
+# Linux
+linux/flutter/ephemeral/
+
+# Web
+web/.dart_tool/
+
+# Firebase/Secrets
+*.keystore
+**/google-services.json
+**/GoogleService-Info.plist
+
+# Others
+.env
+*.log
+*.tmp
+*.lock
+*.bak
+*.DS_Store
+*.class
+*.pyc
+
+# Coverage
+coverage/
+
+# Symbol files
+*.symbols
