@@ -16,7 +16,7 @@ class _DeletedNotificationsPageState extends State<DeletedNotificationsPage> {
 
   void _loadDeletedNotifications() async {
     var notificationService = Provider.of<NotificationService>(context, listen: false);
-    await notificationService.loadDeletedNotifications(); // ✅ Now using the public method
+    await notificationService.loadDeletedNotifications(); //
     setState(() {}); // Refresh UI
   }
 
