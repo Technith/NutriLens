@@ -21,7 +21,7 @@ class ApiService {
 
           print("🚨 Recall: $product | Reason: $reason | Date: $date");
 
-          // Save to Firebase
+          // Save to Firebase only if it's not a duplicate
           await saveRecallToFirebase(product, reason, date);
         }
       } else {
@@ -29,6 +29,24 @@ class ApiService {
       }
     } catch (e) {
       print("❌ Error fetching FDA recalls: $e");
+    }
+  }
+
+  /// Save recall alerts to Firebase (deduplicated)
+  Future<void> saveRecallToFirebase(String product, String reason, String date) async {
+    final String key = '${product.hashCode}_$date';
+    final DatabaseReference ref = FirebaseDatabase.instance.ref("recalls/$key");
+
+    final snapshot = await ref.get();
+    if (!snapshot.exists) {
+      await ref.set({
+        "product": product,
+        "reason": reason,
+        "date": date,
+      });
+      print("✅ Recall saved to Firebase!");
+    } else {
+      print("⚠️ Duplicate recall skipped: $product ($date)");
     }
   }
 
@@ -57,19 +75,6 @@ class ApiService {
     } catch (e) {
       print("❌ Error fetching ingredient info: $e");
     }
-  }
-
-  /// Save recall alerts to Firebase
-  Future<void> saveRecallToFirebase(String product, String reason, String date) async {
-    DatabaseReference ref = FirebaseDatabase.instance.ref("recalls");
-
-    await ref.push().set({
-      "product": product,
-      "reason": reason,
-      "date": date,
-    });
-
-    print("✅ Recall saved to Firebase!");
   }
 
   /// Save ingredient warnings to Firebase

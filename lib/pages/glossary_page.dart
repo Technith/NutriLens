@@ -17,10 +17,66 @@ class GlossaryPage extends StatefulWidget {
 }
 
 class _GlossaryPageState extends State<GlossaryPage> {
-
+  List<String> _trendingIngredients = [];
+  String _searchQuery = '';
   Set<String> _userAllergenPreferences = {}; // new for allergen color highlighting
   Set<String> _userDietaryPreferences = {};
 
+  Future<void> _loadTrendingFromHistory() async {
+    final ref = FirebaseDatabase.instance.ref("HistoryLog");
+    final snapshot = await ref.get();
+    if (!snapshot.exists) return;
+
+    final Map<dynamic, dynamic> allUserNodes = Map.from(snapshot.value as Map);
+    final Map<String, int> ingredientFrequency = {};
+
+    for (var userNode in allUserNodes.values) {
+      if (userNode is Map) {
+        for (var scanEntry in userNode.values) {
+          final rawIngredients = scanEntry["Ingredients"];
+          if (rawIngredients != null && rawIngredients is String) {
+            final ingredients = rawIngredients.split(",");
+            for (var item in ingredients) {
+              final cleaned = item.trim().toLowerCase();
+              if (cleaned.isNotEmpty) {
+                ingredientFrequency[cleaned] = (ingredientFrequency[cleaned] ?? 0) + 1;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    final sorted = ingredientFrequency.entries.toList()
+      ..sort((a, b) => b.value.compareTo(a.value));
+
+    setState(() {
+      _trendingIngredients = sorted.take(3).map((e) => e.key).toList();
+    });
+  }
+
+
+  List<Widget> _buildSubstitutionWidgets(dynamic allergenMatchesRaw) {
+    final matches = List<String>.from(allergenMatchesRaw ?? []);
+    final suggestions = <Widget>[];
+
+    for (final match in matches) {
+      final lower = match.toLowerCase().trim();
+      if (_userAllergenPreferences.contains(lower) && substitutionMap.containsKey(lower)) {
+        suggestions.add(
+          Padding(
+            padding: const EdgeInsets.only(top: 4.0),
+            child: Text(
+              "🔁 Suggested Substitution for $match: ${substitutionMap[lower]!.join(', ')}",
+              style: const TextStyle(color: Colors.deepOrange),
+            ),
+          ),
+        );
+      }
+    }
+
+    return suggestions;
+  }
 
 
 
@@ -73,14 +129,33 @@ class _GlossaryPageState extends State<GlossaryPage> {
     "shellfish", "hazelnut", "oats", "legumes", "chickpeas",
     "mustard", "sunflower seeds", "banana"
   ];
+  final Map<String, List<String>> substitutionMap = {
+    "milk": ["oat milk", "soy milk", "rice milk", "almond milk", "coconut milk"],
+    "peanut": ["sunflower seed butter", "soy butter", "pumpkin seed butter", "pea butter"],
+    "tree nut": ["pumpkin seeds", "sunflower seeds", "toasted oats", "roasted chickpeas"],
+    "wheat": ["quinoa", "rice flour", "cornmeal", "buckwheat", "millet"],
+    "gluten": ["rice", "sorghum", "amaranth", "teff", "corn flour"],
+    "shrimp": ["jackfruit", "hearts of palm", "white beans (for texture)"],
+    "shellfish": ["mushrooms", "eggplant", "tofu", "zucchini", "artichoke hearts"],
+    "hazelnut": ["pumpkin seeds", "roasted chickpeas", "toasted oats"],
+    "oats": ["quinoa flakes", "buckwheat groats", "amaranth", "rice flakes"],
+    "legumes": ["quinoa", "millet", "buckwheat", "animal protein (if applicable)"],
+    "chickpeas": ["cooked lentils", "white beans", "edamame (if not allergic to soy)"],
+    "mustard": ["horseradish", "wasabi", "turmeric", "dijon-free dressings"],
+    "sunflower seeds": ["pumpkin seeds", "hemp seeds", "chia seeds"],
+    "banana": ["applesauce", "avocado", "mashed pear", "pumpkin puree"],
+  };
 
+/*
   final List<String> _availableCategories = [
     "Dairy", "Seafood", "Grain", "Fruit", "Spread", "Oil", "Spice"
-  ];
+  ]; */
 
   @override
   void initState() {
     super.initState();
+    _loadTrendingFromHistory();
+
     _loadUserAllergenPreferences();
     _loadUserPreferences();
     _loadUserDietaryPreferences(); // <--- Add this
@@ -129,7 +204,9 @@ class _GlossaryPageState extends State<GlossaryPage> {
 
         setState(() {
           _allIngredients = updatedIngredients;
-          _displayedIngredients = updatedIngredients;
+          _displayedIngredients = updatedIngredients.where((ingredient) =>
+              ingredient['name'].toString().toLowerCase().contains(_searchQuery.toLowerCase())
+          ).toList();
         });
       }
     });
@@ -250,13 +327,13 @@ class _GlossaryPageState extends State<GlossaryPage> {
                     _showAllergenListDialog();
                   },
                 ),
-                ListTile(
+                /* ListTile(
                   title: const Text('Sort by Category'),
                   onTap: () {
                     Navigator.of(context).pop();
                     _showCategoryListDialog();
                   },
-                ),
+                ), */
               ],
             ),
           ),
@@ -299,7 +376,7 @@ class _GlossaryPageState extends State<GlossaryPage> {
       },
     );
   }
-
+/*
   void _showCategoryListDialog() {
     showDialog(
       context: context,
@@ -334,7 +411,7 @@ class _GlossaryPageState extends State<GlossaryPage> {
       },
     );
   }
-
+*/
   void _filterBySpecificAllergen(String allergen) {
     setState(() {
       _displayedIngredients = _displayedIngredients.where((ingredient) {
@@ -343,7 +420,7 @@ class _GlossaryPageState extends State<GlossaryPage> {
       }).toList();
     });
   }
-
+/*
   void _filterByCategory(String category) {
     setState(() {
       _displayedIngredients = _displayedIngredients.where((ingredient) {
@@ -351,7 +428,7 @@ class _GlossaryPageState extends State<GlossaryPage> {
       }).toList();
     });
   }
-
+  */
   void _filterIngredients(String filterType) {
     List<Map<String, dynamic>> filtered = [];
 
@@ -451,7 +528,11 @@ class _GlossaryPageState extends State<GlossaryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Glossary'),
+        title: const Text(
+          'INGREDIENT GLOSSARY',
+          style: TextStyle(fontSize: 18), // put style here
+        ),
+
         backgroundColor: Colors.green,
         actions: [
           IconButton(
@@ -464,115 +545,190 @@ class _GlossaryPageState extends State<GlossaryPage> {
           ),
         ],
       ),
-      body: ListView.builder(
-        itemCount: _displayedIngredients.length + (_hasMore ? 1 : 0),
-        itemBuilder: (context, index) {
-          if (index == _displayedIngredients.length && _hasMore) {
-            return const Center(child: CircularProgressIndicator());
-          }
-
-          final ingredient = _displayedIngredients[index];
-          final name = ingredient['name'];
-          bool isExpanded = _expandedIndex == index;
-          bool isSafeMarked = _userSafeIngredients.contains(name);
-          bool isAvoidMarked = _userAvoidIngredients.contains(name);
-
-          return Container(
-            color: _getTileColor(ingredient),
-            child: ListTile(
-              title: Row(
-                children: [
-                  Text(name),
-                  if ((ingredient['DietaryTags'] ?? [])
-                      .map((e) => e.toString().toLowerCase())
-                      .any((tag) => _userDietaryPreferences.contains(tag)))
-                    const Padding(
-                      padding: EdgeInsets.only(left: 8.0),
-                      child: Tooltip(
-                        message: "Matches your dietary preferences",
-                        child: Icon(Icons.thumb_up, color: Colors.green, size: 18),
-                      ),
-                    ),
-                  if (isSafeMarked)
-                    const Padding(
-                      padding: EdgeInsets.only(left: 8.0),
-                      child: Tooltip(
-                        message: "Your Safe Ingredient",
-                        child: Icon(Icons.check_circle, color: Colors.green, size: 18),
-                      ),
-                    ),
-
-                  if (isAvoidMarked)
-                    const Padding(
-                      padding: EdgeInsets.only(left: 8.0),
-                      child: Tooltip(
-                        message: "Your Avoided Ingredient",
-                        child: Icon(Icons.block, color: Colors.red, size: 18),
-                      ),
-                    ),
-
-                ],
-              ),
-              subtitle: isExpanded
-                  ? Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text("Description: ${ingredient['description']}"),
-                  Text("Health Impact: ${ingredient['healthImpact']}"),
-                  Text("Warnings: ${ingredient['warnings']}"),
-                  Text("Category: ${ingredient['category']}"),
-                  Text("Allergen Risk: ${ingredient['allergenRisk']}"),
-                  Text("Common Uses: ${ingredient['commonUses']}"),
-                  if (ingredient['allergenMatch'] != null && ingredient['allergenMatch'].isNotEmpty)
-                    Text("Allergens: ${ingredient['allergenMatch'].join(', ')}"),
-                  Row(
-                    children: [
-                      TextButton(
-                        onPressed: () async {
-                          setState(() {
-                            if (isSafeMarked) {
-                              _userSafeIngredients.remove(name);
-                            } else {
-                              _userSafeIngredients.add(name);
-                              _userAvoidIngredients.remove(name); // Remove from avoid if marked safe
-                            }
-                          });
-                          await _saveUserPreferences();
-                        },
-                        child: Text(isSafeMarked ? "Unmark Safe" : "Mark as Safe"),
-                      ),
-                      TextButton(
-                        onPressed: () async {
-                          setState(() {
-                            if (isAvoidMarked) {
-                              _userAvoidIngredients.remove(name);
-                            } else {
-                              _userAvoidIngredients.add(name);
-                              _userSafeIngredients.remove(name); // Remove from safe if marked avoid
-                            }
-                          });
-                          await _saveUserPreferences();
-                        },
-                        child: Text(isAvoidMarked ? "Unmark Avoid" : "Mark as Avoid"),
-                      ),
-
-                    ],
+      body: Column(
+        children: [
+          if (_trendingIngredients.isNotEmpty)
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Padding(
+                  padding: EdgeInsets.fromLTRB(16, 12, 16, 4),
+                  child: Text(
+                    "🔥 Trending Ingredients This Month",
+                    style: TextStyle(fontWeight: FontWeight.bold),
                   ),
-                ],
-              )
-                  : null,
-              onTap: () {
-                setState(() {
-                  _expandedIndex = isExpanded ? null : index;
-                });
-              },
-              trailing: Icon(
-                isExpanded ? Icons.expand_less : Icons.expand_more,
-              ),
+                ),
+
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 16),
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                  decoration: BoxDecoration(
+                    color: Colors.orange.shade50,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: List.generate(_trendingIngredients.length, (index) {
+                      final name = _trendingIngredients[index];
+                      final medals = ["🥇", "🥈", "🥉"];
+                      final medal = index < medals.length ? medals[index] : "#${index + 1}";
+
+                      return Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Text(medal, style: const TextStyle(fontSize: 18)),
+                          const SizedBox(width: 4),
+                          Text(
+                            name,
+                            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+                          ),
+                          if (index < _trendingIngredients.length - 1)
+                            const SizedBox(width: 16),
+                        ],
+                      );
+                    }),
+                  ),
+                ),
+
+                // 👇 ADD THIS: Search Bar under medals
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 12, 16, 8),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      hintText: 'quick search local ingredients...',
+                      prefixIcon: Icon(Icons.search),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: const BorderSide(color: Colors.purple),
+                      ),
+                    ),
+                    onChanged: (value) {
+                      setState(() {
+                        _searchQuery = value;
+                        _displayedIngredients = _allIngredients.where((ingredient) =>
+                            ingredient['name']
+                                .toString()
+                                .toLowerCase()
+                                .contains(_searchQuery.toLowerCase())).toList();
+                      });
+                    },
+                  ),
+                ),
+              ],
             ),
-          );
-        },
-      ),
-    );
-  }
-}
+
+
+
+          Expanded(
+            child: ListView.builder(
+              itemCount: _displayedIngredients.length + (_hasMore ? 1 : 0),
+              itemBuilder: (context, index) {
+                if (index == _displayedIngredients.length && _hasMore) {
+                  return const Center(child: CircularProgressIndicator());
+                }
+
+                final ingredient = _displayedIngredients[index];
+                final name = ingredient['name'];
+                bool isExpanded = _expandedIndex == index;
+                bool isSafeMarked = _userSafeIngredients.contains(name);
+                bool isAvoidMarked = _userAvoidIngredients.contains(name);
+
+                return Container(
+                  color: _getTileColor(ingredient),
+                  child: ListTile(
+                    title: Row(
+                      children: [
+                        Text(name),
+                        if ((ingredient['DietaryTags'] ?? [])
+                            .map((e) => e.toString().toLowerCase())
+                            .any((tag) => _userDietaryPreferences.contains(tag)))
+                          const Padding(
+                            padding: EdgeInsets.only(left: 8.0),
+                            child: Tooltip(
+                              message: "Matches your dietary preferences",
+                              child: Icon(Icons.thumb_up, color: Colors.green, size: 18),
+                            ),
+                          ),
+                        if (isSafeMarked)
+                          const Padding(
+                            padding: EdgeInsets.only(left: 8.0),
+                            child: Tooltip(
+                              message: "Your Safe Ingredient",
+                              child: Icon(Icons.check_circle, color: Colors.green, size: 18),
+                            ),
+                          ),
+                        if (isAvoidMarked)
+                          const Padding(
+                            padding: EdgeInsets.only(left: 8.0),
+                            child: Tooltip(
+                              message: "Your Avoided Ingredient",
+                              child: Icon(Icons.block, color: Colors.red, size: 18),
+                            ),
+                          ),
+                      ],
+                    ),
+                    subtitle: isExpanded
+                        ? Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text("Description: ${ingredient['description']}"),
+                        Text("Health Impact: ${ingredient['healthImpact']}"),
+                        Text("Warnings: ${ingredient['warnings']}"),
+                        Text("Category: ${ingredient['category']}"),
+                        Text("Allergen Risk: ${ingredient['allergenRisk']}"),
+                        Text("Common Uses: ${ingredient['commonUses']}"),
+                        if (ingredient['allergenMatch'] != null &&
+                            ingredient['allergenMatch'].isNotEmpty)
+                          Text("Allergens: ${ingredient['allergenMatch'].join(', ')}"),
+                        ..._buildSubstitutionWidgets(ingredient['allergenMatch']),
+
+                        Row(
+                          children: [
+                            TextButton(
+                              onPressed: () async {
+                                setState(() {
+                                  if (isSafeMarked) {
+                                    _userSafeIngredients.remove(name);
+                                  } else {
+                                    _userSafeIngredients.add(name);
+                                    _userAvoidIngredients.remove(name);
+                                  }
+                                });
+                                await _saveUserPreferences();
+                              },
+                              child: Text(isSafeMarked ? "Unmark Safe" : "Mark as Safe"),
+                            ),
+                            TextButton(
+                              onPressed: () async {
+                                setState(() {
+                                  if (isAvoidMarked) {
+                                    _userAvoidIngredients.remove(name);
+                                  } else {
+                                    _userAvoidIngredients.add(name);
+                                    _userSafeIngredients.remove(name);
+                                  }
+                                });
+                                await _saveUserPreferences();
+                              },
+                              child: Text(isAvoidMarked ? "Unmark Avoid" : "Mark as Avoid"),
+                            ),
+                          ],
+                        ),
+                      ],
+                    )
+                        : null,
+                    onTap: () {
+                      setState(() {
+                        _expandedIndex = isExpanded ? null : index;
+                      });
+                    },
+                    trailing: Icon(
+                      isExpanded ? Icons.expand_less : Icons.expand_more,
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ), ); } }

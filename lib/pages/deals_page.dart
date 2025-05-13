@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_database/firebase_database.dart';
 import '../services/openfood_deals_service.dart';
 
 class DealsPage extends StatefulWidget {
@@ -10,6 +11,7 @@ class DealsPage extends StatefulWidget {
 
 class _DealsPageState extends State<DealsPage> {
   final OpenFoodDealsService _dealsService = OpenFoodDealsService();
+  final DatabaseReference _dbRef = FirebaseDatabase.instance.ref("grocery_deals");
   List<Map<String, dynamic>> _deals = [];
   String _currentCategory = 'snacks';
   bool _isLoading = true;
@@ -17,21 +19,38 @@ class _DealsPageState extends State<DealsPage> {
   @override
   void initState() {
     super.initState();
-    _loadDeals();
+    _loadCachedDeals(); // Only load Firebase data by default
   }
 
-  // Load deals: try cache first, then fetch new if needed
-  Future<void> _loadDeals() async {
-    setState(() {
-      _isLoading = true;
-    });
+  Future<void> _loadCachedDeals() async {
+    setState(() => _isLoading = true);
+
+    final snapshot = await _dbRef.child(_currentCategory).once();
+    final data = snapshot.snapshot.value;
+
+    if (data is Map) {
+      _deals = data.values.map((e) => Map<String, dynamic>.from(e)).toList();
+    } else {
+      _deals = [];
+    }
+
+    setState(() => _isLoading = false);
+  }
+
+  Future<void> _fetchFreshDeals() async {
+    setState(() => _isLoading = true);
 
     final deals = await _dealsService.fetchGroceryDeals(category: _currentCategory);
 
-    setState(() {
+    if (deals.isNotEmpty) {
       _deals = deals;
-      _isLoading = false;
-    });
+      final Map<String, dynamic> saveData = {
+        for (var deal in deals) _dbRef.push().key!: deal,
+      };
+      await _dbRef.child(_currentCategory).set(saveData);
+    }
+
+    setState(() => _isLoading = false);
   }
 
   void _onCategoryChanged(String? newCategory) {
@@ -39,7 +58,7 @@ class _DealsPageState extends State<DealsPage> {
       setState(() {
         _currentCategory = newCategory;
       });
-      _loadDeals();
+      _loadCachedDeals();
     }
   }
 
@@ -50,10 +69,16 @@ class _DealsPageState extends State<DealsPage> {
         title: const Text('Grocery Deals'),
         centerTitle: true,
         backgroundColor: Colors.green,
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.refresh),
+            onPressed: _fetchFreshDeals,
+            tooltip: 'Fetch Fresh Deals',
+          )
+        ],
       ),
       body: Column(
         children: [
-          // Category dropdown
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: DropdownButton<String>(
@@ -70,60 +95,30 @@ class _DealsPageState extends State<DealsPage> {
           ),
           Expanded(
             child: _isLoading
-                ? const Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CircularProgressIndicator(color: Colors.green),
-                  SizedBox(height: 20),
-                  Text('Fetching grocery deals...')
-                ],
-              ),
-            )
+                ? const Center(child: CircularProgressIndicator(color: Colors.green))
                 : _deals.isEmpty
-                ? const Center(
-              child: Text(
-                '😢 No deals found. Try another category!',
-                style: TextStyle(fontSize: 18),
-              ),
-            )
+                ? const Center(child: Text('No deals available.'))
                 : RefreshIndicator(
-              onRefresh: _loadDeals,
+              onRefresh: _fetchFreshDeals,
               child: ListView.builder(
-                padding: const EdgeInsets.all(8),
                 itemCount: _deals.length,
                 itemBuilder: (context, index) {
                   final deal = _deals[index];
                   return Card(
-                    margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-                    elevation: 5,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
+                    margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                    elevation: 4,
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                     child: ListTile(
-                      leading: CircleAvatar(
-                        radius: 30,
-                        backgroundColor: Colors.green[50],
-                        child: Icon(Icons.shopping_cart, color: Colors.green[800]),
-                      ),
-                      title: Text(
-                        deal['title'] ?? 'Unknown Product',
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
+                      leading: deal['image_url'] != null && deal['image_url'] != ''
+                          ? Image.network(deal['image_url'], width: 50, height: 50, fit: BoxFit.cover)
+                          : const Icon(Icons.shopping_cart),
+                      title: Text(deal['title'] ?? 'Unknown'),
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(deal['brand'] ?? 'Unknown Brand'),
-                          const SizedBox(height: 4),
-                          Text(
-                            'Store: ${deal['store'] ?? 'Various stores'}',
-                            style: const TextStyle(color: Colors.blueGrey),
-                          ),
-                          const SizedBox(height: 4),
-                          Text(
-                            '${deal['discount'] ?? '5'}% OFF',
-                            style: const TextStyle(color: Colors.redAccent, fontWeight: FontWeight.bold),
-                          ),
+                          Text(deal['brand'] ?? ''),
+                          Text('Store: ${deal['store'] ?? ''}', style: const TextStyle(color: Colors.grey)),
+                          Text('${deal['discount']}% OFF', style: const TextStyle(color: Colors.redAccent)),
                         ],
                       ),
                       trailing: const Icon(Icons.local_offer, color: Colors.redAccent),
@@ -134,30 +129,6 @@ class _DealsPageState extends State<DealsPage> {
             ),
           ),
         ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 2,
-        type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.notifications), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.local_offer, color: Colors.green), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: ''),
-        ],
-        onTap: (index) {
-          if (index == 0) {
-            Navigator.pushNamed(context, '/settings');
-          } else if (index == 1) {
-            Navigator.pushNamed(context, '/notifications');
-          } else if (index == 2) {
-            Navigator.pushNamed(context, '/deals');
-          } else if (index == 3) {
-            Navigator.pushNamed(context, '/search');
-          } else if (index == 4) {
-            Navigator.pushNamed(context, '/profile');
-          }
-        },
       ),
     );
   }
