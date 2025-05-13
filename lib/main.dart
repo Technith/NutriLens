@@ -26,6 +26,7 @@ import 'pages/deals_page.dart';
 import 'pages/barcode_scanner_page.dart'; // <-- Your scanner page
 import 'pages/report_issue_page.dart';
 import 'pages/add_ingredients_page.dart';
+import 'services/color_theme_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -42,8 +43,11 @@ void main() async {
   await notificationService.initialize();
 
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => notificationService,
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => notificationService),
+        ChangeNotifierProvider(create: (_) => ColorThemeProvider()),
+      ],
       child: NutriLensApp(notificationService: notificationService),
     ),
   );
