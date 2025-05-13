@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'barcode_scanner_page.dart';
+import '../theme/theme_colors.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -7,12 +8,15 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ThemeColor.background,
       appBar: AppBar(
-        title: Text('Nutrilens'),
+        automaticallyImplyLeading: false,
+        iconTheme: IconThemeData(color: ThemeColor.textPrimary),
+        title: Text('Nutrilens', style: TextStyle(color: ThemeColor.textPrimary)),
         centerTitle: true,
         elevation: 0,
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
+        backgroundColor: ThemeColor.primary,
+        foregroundColor: ThemeColor.textPrimary, // Text color
       ),
       body: Center(
         child: Column(
@@ -22,23 +26,23 @@ class HomePage extends StatelessWidget {
             Icon(
               Icons.camera_alt_outlined,
               size: 150,
-              color: Colors.black,
+              color: ThemeColor.textSecondary,
             ),
             SizedBox(height: 20),
             Text(
               'Scan now!',
               style: TextStyle(
                 fontSize: 20,
-                color: Colors.green,
+                color: ThemeColor.primary,
                 fontWeight: FontWeight.bold,
               ),
             ),
             const SizedBox(height: 20),
             ElevatedButton.icon(
-              icon: Icon(Icons.qr_code_scanner),
-              label: Text("Start Scanner"),
+              icon: Icon(Icons.qr_code_scanner, color: ThemeColor.textSecondary),
+              label: Text("Start Scanner", style: TextStyle(color: ThemeColor.textSecondary)),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.green,
+                backgroundColor: ThemeColor.primary,
                 padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
               ),
@@ -62,15 +66,16 @@ class HomePage extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: ThemeColor.background,
         currentIndex: 3, // Home index
         type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.settings), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.notifications), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.local_offer), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.home, color: Colors.green), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: ''),
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.settings, color: ThemeColor.textSecondary), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.notifications, color: ThemeColor.textSecondary), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.local_offer,  color: ThemeColor.textSecondary), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.home, color: ThemeColor.primary), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.search,  color: ThemeColor.textSecondary), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.person,  color: ThemeColor.textSecondary), label: ''),
         ],
         onTap: (index) {
           if (index == 0) {

@@ -2,6 +2,7 @@ import '../components/button_fab.dart';
 import '../components/text_field_fab.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import '../theme/theme_colors.dart';
 
 class ChangeEmail extends StatelessWidget {
   final emailController = TextEditingController();
@@ -19,32 +20,59 @@ class ChangeEmail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: ThemeColor.background,
       appBar: AppBar(
-        backgroundColor: Colors.grey[100],
+        backgroundColor: ThemeColor.background,
+        foregroundColor: ThemeColor.textPrimary,
+        elevation: 0,
       ),
       body: Center(
         child: Column(
           children: [
-            const Text(
+            Text(
               'Change Email',
               style: TextStyle(
-                color: Colors.black,
+                color: ThemeColor.textPrimary,
                 fontSize: 20,
               ),
             ),
 
             const SizedBox(height: 50),
 
-            TextFieldFab(controller: emailController,
-                hintText: 'Email',
-                obscureText: false),
-
-            const SizedBox(height: 25),
-
-
-            // change button
-            ButtonFab(buttonText: 'Change Email', onTap: () => {changeEmail(), Navigator.pop(context), FirebaseAuth.instance.signOut()}),
+            Theme(
+              data: Theme.of(context).copyWith(
+                inputDecorationTheme: InputDecorationTheme(
+                  hintStyle: TextStyle(color: ThemeColor.textSecondary),
+                ),
+                textTheme: Theme.of(context).textTheme.copyWith(
+                  bodyMedium: TextStyle(color: ThemeColor.textPrimary),
+                ),
+                elevatedButtonTheme: ElevatedButtonThemeData(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: ThemeColor.primary,
+                    foregroundColor: ThemeColor.textPrimary,
+                  ),
+                ),
+              ),
+              child: Column(
+                children: [
+                  TextFieldFab(
+                    controller: emailController,
+                    hintText: 'Email',
+                    obscureText: false,
+                  ),
+                  const SizedBox(height: 25),
+                  ButtonFab(
+                    buttonText: 'Change Email',
+                    onTap: () => {
+                      changeEmail(),
+                      Navigator.pop(context),
+                      FirebaseAuth.instance.signOut(),
+                    },
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),

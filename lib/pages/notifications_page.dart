@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../services/notification_service.dart';
+import '../theme/theme_colors.dart';
+import '../services/color_theme_service.dart';
 
 class NotificationsPage extends StatefulWidget {
   @override
@@ -23,6 +25,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
   @override
   Widget build(BuildContext context) {
     var notificationService = Provider.of<NotificationService>(context);
+    Provider.of<ColorThemeProvider>(context);
     var recalls = notificationService.recalls;
 
     /// **1️⃣ Apply Search Functionality**
@@ -54,8 +57,10 @@ class _NotificationsPageState extends State<NotificationsPage> {
     }
 
     return Scaffold(
+      backgroundColor: ThemeColor.background,
       appBar: AppBar(
-        title: Text("Notifications"),
+        iconTheme: IconThemeData(color: ThemeColor.textPrimary),
+        title: Text("Notifications", style: TextStyle(color: ThemeColor.textPrimary)),
         actions: [
           IconButton(
             icon: Icon(Icons.refresh),
@@ -64,6 +69,8 @@ class _NotificationsPageState extends State<NotificationsPage> {
             },
           ),
         ],
+        backgroundColor: ThemeColor.background,
+        foregroundColor: ThemeColor.textPrimary, // Text color
       ),
       body: Column(
         children: [
@@ -71,9 +78,11 @@ class _NotificationsPageState extends State<NotificationsPage> {
           Padding(
             padding: const EdgeInsets.all(10),
             child: TextField(
+              style: TextStyle(color: ThemeColor.textPrimary),
               decoration: InputDecoration(
                 hintText: "Search Recalls...",
-                prefixIcon: Icon(Icons.search),
+                hintStyle: TextStyle(color: ThemeColor.textSecondary),
+                prefixIcon: Icon(Icons.search, color: ThemeColor.textSecondary),
                 border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
               ),
               onChanged: (value) {
@@ -90,11 +99,16 @@ class _NotificationsPageState extends State<NotificationsPage> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                /// **Sorting Dropdown**
                 DropdownButton<String>(
                   value: _sortOption,
+                  dropdownColor: ThemeColor.background,
+                  iconEnabledColor: ThemeColor.textPrimary,
+                  style: TextStyle(color: ThemeColor.textPrimary),
                   items: ['Newest First', 'Oldest First', 'Alphabetical (A-Z)']
-                      .map((sort) => DropdownMenuItem(value: sort, child: Text(sort)))
+                      .map((sort) => DropdownMenuItem(
+                    value: sort,
+                    child: Text(sort, style: TextStyle(color: ThemeColor.textPrimary)),
+                  ))
                       .toList(),
                   onChanged: (value) {
                     setState(() {
@@ -103,11 +117,16 @@ class _NotificationsPageState extends State<NotificationsPage> {
                   },
                 ),
 
-                /// **Filtering Dropdown**
                 DropdownButton<String>(
                   value: _filterOption,
+                  dropdownColor: ThemeColor.background,
+                  iconEnabledColor: ThemeColor.textPrimary,
+                  style: TextStyle(color: ThemeColor.textPrimary),
                   items: ['All', 'Past 7 Days', 'Past 30 Days']
-                      .map((filter) => DropdownMenuItem(value: filter, child: Text(filter)))
+                      .map((filter) => DropdownMenuItem(
+                    value: filter,
+                    child: Text(filter, style: TextStyle(color: ThemeColor.textPrimary)),
+                  ))
                       .toList(),
                   onChanged: (value) {
                     setState(() {
@@ -122,18 +141,31 @@ class _NotificationsPageState extends State<NotificationsPage> {
           /// **📜 List of Recalls (Filtered & Sorted)**
           Expanded(
             child: filteredRecalls.isEmpty
-                ? Center(child: Text("No recalls found"))
+                ? Center(
+              child: Text(
+                "No recalls found",
+                style: TextStyle(color: ThemeColor.textSecondary),
+              ),
+            )
                 : ListView.builder(
               itemCount: filteredRecalls.length,
               itemBuilder: (context, index) {
                 var recall = filteredRecalls[index];
                 return Card(
+                  color: ThemeColor.background,
+                  elevation: 2,
                   child: ListTile(
                     title: Text(
                       "⚠️ ${recall['product']}",
-                      style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.red, // keeping the alert red
+                      ),
                     ),
-                    subtitle: Text("Reason: ${recall['reason']}\nDate: ${recall['date']}"),
+                    subtitle: Text(
+                      "Reason: ${recall['reason']}\nDate: ${recall['date']}",
+                      style: TextStyle(color: ThemeColor.textPrimary),
+                    ),
                   ),
                 );
               },

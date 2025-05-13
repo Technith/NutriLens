@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:nutrilensfire/theme/theme_colors.dart';
 import 'package:provider/provider.dart';
 import 'services/notification_service.dart';
 import 'pages/health_metrics_page.dart';
@@ -41,6 +42,8 @@ void main() async {
 
   NotificationService notificationService = NotificationService();
   await notificationService.initialize();
+
+  ThemeColor.setLightTheme();
 
   runApp(
     MultiProvider(

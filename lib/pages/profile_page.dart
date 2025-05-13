@@ -5,7 +5,8 @@ import 'package:nutrilensfire/pages/change_password.dart';
 import 'package:nutrilensfire/pages/calorie_goal_page.dart';
 import 'package:nutrilensfire/pages/allergen_info.dart';
 import 'package:nutrilensfire/pages/tracker_page.dart';
-import 'package:nutrilensfire/pages/login.dart'; // ✅ Added import
+import 'package:nutrilensfire/pages/login.dart';
+import '../theme/theme_colors.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -35,23 +36,25 @@ class _ProfilePageState extends State<ProfilePage> {
             return Text(snapshot.error.toString());
           } else {
             return Scaffold(
+              backgroundColor: ThemeColor.background,
               appBar: AppBar(
                 title: const Text('Nutrilens'),
                 centerTitle: true,
                 elevation: 0,
-                backgroundColor: Colors.white,
-                foregroundColor: Colors.black,
+                backgroundColor: ThemeColor.primary,
+                foregroundColor: ThemeColor.textPrimary,
               ),
               body: Column(
                 children: <Widget>[
                   Text(
                     snapshot.data.toString(),
-                    style: const TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
+                    style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.bold,
+                        color: ThemeColor.textPrimary
                     ),
                   ),
-                  const SizedBox(height: 8),
+
                   if (user != null) ...[
                     Center(
                       child: ElevatedButton.icon(
@@ -66,7 +69,6 @@ class _ProfilePageState extends State<ProfilePage> {
                           }
                       ),
                     ),
-                    const SizedBox(height: 8),
                     Center(
                       child: ElevatedButton.icon(
                           label: const Text("Change Password"),
@@ -80,20 +82,20 @@ class _ProfilePageState extends State<ProfilePage> {
                           }
                       ),
                     ),
-                    const SizedBox(height: 8),
+                    const SizedBox(height: 10),
                     CircleAvatar(
                       radius: 50,
-                      backgroundColor: Colors.grey.shade300,
-                      child: const Icon(Icons.person, size: 50, color: Colors.white),
+                      backgroundColor: ThemeColor.secondary,
+                      child: Icon(Icons.person, size: 50, color: ThemeColor.primary),
                     ),
                   ] else ...[
                     const SizedBox(height: 20),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.symmetric(horizontal: 20.0),
                       child: Text(
                         "Want to save preferences and personalize your experience?",
                         textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 16),
+                        style: TextStyle(fontSize: 16, color: ThemeColor.textSecondary),
                       ),
                     ),
                     const SizedBox(height: 10),
@@ -101,11 +103,18 @@ class _ProfilePageState extends State<ProfilePage> {
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (_) => LoginPage())); // ✅ Fixed redirect
                       },
-                      style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
-                      child: const Text("Sign in or Create an Account"),
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: ThemeColor.primary,
+                        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 12),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                      ),
+                      child: Text(
+                        "Sign in or Create an Account",
+                        style: TextStyle(color: ThemeColor.textPrimary),
+                      ),
                     ),
                   ],
-                  const SizedBox(height: 16),
+
                   if (user != null)
                     Expanded(
                       child: ListView(
@@ -113,7 +122,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           context: context,
                           tiles: [
                             ListTile(
-                              title: const Text('Calorie Goal'),
+                              title: Text('Calorie Goal',style: TextStyle(color: ThemeColor.textPrimary),),
                               onTap: () {
                                 Navigator.push(
                                   context,
@@ -122,7 +131,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               },
                             ),
                             ListTile(
-                              title: const Text('Allergen Information'),
+                              title: Text('Allergen Information',style: TextStyle(color: ThemeColor.textPrimary),),
                               onTap: () {
                                 Navigator.push(
                                   context,
@@ -131,7 +140,7 @@ class _ProfilePageState extends State<ProfilePage> {
                               },
                             ),
                             ListTile(
-                              title: const Text('Calorie/Nutrition Tracker'),
+                              title: Text('Calorie/Nutrition Tracker',style: TextStyle(color: ThemeColor.textPrimary),),
                               onTap: () {
                                 Navigator.push(
                                   context,
@@ -140,13 +149,13 @@ class _ProfilePageState extends State<ProfilePage> {
                               },
                             ),
                             ListTile(
-                              title: const Text('History Log'),
+                              title: Text('History Log',style: TextStyle(color: ThemeColor.textPrimary),),
                               onTap: () {
                                 Navigator.pushNamed(context, '/history_log');
                               },
                             ),
                             ListTile(
-                              title: const Text('Report Issue'),
+                              title: Text('Report Issue',style: TextStyle(color: ThemeColor.textPrimary),),
                               onTap: () {
                                 Navigator.pushNamed(context, '/report_issue');
                               },

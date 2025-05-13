@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../theme/theme_colors.dart';
 
 class ButtonFab extends StatelessWidget {
   final String buttonText;
@@ -17,14 +18,14 @@ class ButtonFab extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(25),
         margin: const EdgeInsets.symmetric(horizontal: 25),
-        decoration: const BoxDecoration(
-          color: Colors.black,
+        decoration: BoxDecoration(
+          color: ThemeColor.primary,
         ),
         child: Center(
           child: Text(
             buttonText,
-            style: const TextStyle(
-              color: Colors.white,
+            style: TextStyle(
+              color: ThemeColor.textPrimary,
               fontWeight: FontWeight.bold,
               fontSize: 18,
             ),

@@ -3,6 +3,7 @@ import '../components/button_fab.dart';
 import '../components/text_field_fab.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import '../theme/theme_colors.dart';
 
 class ChangePassword extends StatelessWidget {
   final passwordController = TextEditingController();
@@ -19,17 +20,19 @@ class ChangePassword extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: ThemeColor.background,
       appBar: AppBar(
-        backgroundColor: Colors.grey[100],
+        backgroundColor: ThemeColor.background,
+        foregroundColor: ThemeColor.textPrimary,
+        elevation: 0,
       ),
       body: Center(
         child: Column(
           children: [
-            const Text(
+            Text(
               'Change Password',
               style: TextStyle(
-                color: Colors.black,
+                color: ThemeColor.textPrimary,
                 fontSize: 20,
               ),
             ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import '../theme/theme_colors.dart';
 
 class ReportIssuePage extends StatefulWidget {
   const ReportIssuePage({Key? key}) : super(key: key);
@@ -82,8 +83,11 @@ class _ReportIssuePageState extends State<ReportIssuePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ThemeColor.background,
       appBar: AppBar(
         title: const Text('Report Issue'),
+        backgroundColor: ThemeColor.background,
+        foregroundColor: ThemeColor.textPrimary,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -91,6 +95,8 @@ class _ReportIssuePageState extends State<ReportIssuePage> {
           children: [
             DropdownButton<String>(
               value: _reportType,
+              dropdownColor: ThemeColor.background,
+              style: TextStyle(color: ThemeColor.textPrimary),
               onChanged: (String? newValue) {
                 setState(() {
                   _reportType = newValue ?? _reportType;
@@ -100,39 +106,45 @@ class _ReportIssuePageState extends State<ReportIssuePage> {
                   .map<DropdownMenuItem<String>>((String value) {
                 return DropdownMenuItem<String>(
                   value: value,
-                  child: Text(value),
+                  child: Text(value, style: TextStyle(color: ThemeColor.textPrimary)),
                 );
               }).toList(),
             ),
             TextField(
               controller: _descriptionController,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
                 labelText: 'Description',
+                labelStyle: TextStyle(color: ThemeColor.textPrimary),
                 hintText: 'Describe your issue or feedback',
+                hintStyle: TextStyle(color: ThemeColor.textSecondary),
               ),
               maxLines: 5,
             ),
             ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                backgroundColor: ThemeColor.secondary,
+              ),
               onPressed: _submitReport,
-              child: const Text('Submit Report'),
+              child: Text('Submit Report', style: TextStyle(color: ThemeColor.textPrimary)),
             ),
             const SizedBox(height: 20),
             const Divider(),
-            const Text(
+            Text(
               'Your Previous Reports',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: ThemeColor.textPrimary),
             ),
             const SizedBox(height: 10),
             Expanded(
               child: _feedbackList.isEmpty
-                  ? const Text("No feedback submitted yet.")
+                  ? Text("No feedback submitted yet.", style: TextStyle(color: ThemeColor.textSecondary))
                   : ListView.builder(
                 itemCount: _feedbackList.length,
                 itemBuilder: (context, index) {
                   final report = _feedbackList[index];
                   return Card(
+                    color: ThemeColor.primary.withOpacity(0.9),
                     child: ListTile(
-                      title: Text(report['Type']),
+                      title: Text(report['Type'], style: TextStyle(color: ThemeColor.textPrimary)),
                       subtitle: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

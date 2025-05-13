@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../theme/theme_colors.dart';
 
 class TextFieldFab extends StatelessWidget {
   final dynamic controller;
@@ -19,16 +20,18 @@ class TextFieldFab extends StatelessWidget {
       child: TextField(
         controller: controller,
         obscureText: obscureText,
+        style: TextStyle(color: ThemeColor.textPrimary),
         decoration: InputDecoration(
-          enabledBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.white),
+          enabledBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: ThemeColor.primary),
           ),
-          focusedBorder: const OutlineInputBorder(
-            borderSide: BorderSide(color: Colors.grey),
+          focusedBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: ThemeColor.primary),
           ),
-          fillColor: Colors.white,
+          fillColor: ThemeColor.secondary,
           filled: true,
           hintText: hintText,
+          hintStyle: TextStyle(color: ThemeColor.textSecondary),
         ),
       ),
     );

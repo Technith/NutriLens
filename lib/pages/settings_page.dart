@@ -8,6 +8,8 @@ import '../services/sprouts_deals_scraper.dart';
 import '../services/albertsons_deals_scraper.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:nutrilensfire/pages/login.dart'; // ✅ Import login.dart page
+import '../theme/theme_colors.dart';
+import '../services/color_theme_service.dart';
 
 class SettingsPage extends StatefulWidget {
   @override
@@ -67,20 +69,29 @@ class _SettingsPageState extends State<SettingsPage> {
   @override
   Widget build(BuildContext context) {
     final user = FirebaseAuth.instance.currentUser;
+    Provider.of<ColorThemeProvider>(context);
 
     return Scaffold(
+      backgroundColor: ThemeColor.background,
       appBar: AppBar(
-        title: const Text('Nutrilens'),
+        iconTheme: IconThemeData(color: ThemeColor.textPrimary),
+        title: Text('Nutrilens', style: TextStyle(color: ThemeColor.textPrimary)),
         centerTitle: true,
         elevation: 0,
-        backgroundColor: Colors.white,
-        foregroundColor: Colors.black,
+        backgroundColor: ThemeColor.secondary,
+        foregroundColor: ThemeColor.textPrimary, // Text color
       ),
       body: ListView(
         padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
         children: [
           ListTile(
-            title: const Text('Notifications', style: TextStyle(fontWeight: FontWeight.bold)),
+            title: Text(
+              'Notifications',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: ThemeColor.textPrimary,
+              ),
+            ),
             trailing: const Icon(Icons.arrow_forward_ios),
             onTap: () {
               Navigator.pushNamed(context, '/notifications');
@@ -88,12 +99,36 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           const Divider(),
           ListTile(
-            title: const Text('Notification Frequency', style: TextStyle(fontWeight: FontWeight.bold)),
-            subtitle: const Text("Choose how often you receive alerts"),
+            title: Text(
+              'Notification Frequency',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: ThemeColor.textPrimary,
+              ),
+            ),
+            subtitle: Text(
+              "Choose how often you receive alerts",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: ThemeColor.textSecondary,
+              ),
+            ),
             trailing: DropdownButton<String>(
               value: _selectedFrequency,
+              dropdownColor: ThemeColor.background, // background of dropdown menu
+              iconEnabledColor: ThemeColor.textPrimary, // color of the dropdown arrow
+              style: TextStyle(
+                color: ThemeColor.textPrimary, // color of selected text
+                fontWeight: FontWeight.bold,
+              ),
               items: ["daily", "weekly"]
-                  .map((freq) => DropdownMenuItem(value: freq, child: Text(freq.toUpperCase())))
+                  .map((freq) => DropdownMenuItem(
+                value: freq,
+                child: Text(
+                  freq.toUpperCase(),
+                  style: TextStyle(color: ThemeColor.textPrimary),
+                ),
+              ))
                   .toList(),
               onChanged: (value) {
                 if (value != null) {
@@ -131,15 +166,13 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           const Divider(),
           ListTile(
-            title: const Text('Language', style: TextStyle(fontWeight: FontWeight.bold)),
-            trailing: const Icon(Icons.arrow_forward_ios),
-            onTap: () {
-              Navigator.pushNamed(context, '/language');
-            },
-          ),
-          const Divider(),
-          ListTile(
-            title: const Text('Theme', style: TextStyle(fontWeight: FontWeight.bold)),
+            title: Text(
+              'Theme',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: ThemeColor.textPrimary,
+              ),
+            ),
             trailing: const Icon(Icons.arrow_forward_ios),
             onTap: () {
               Navigator.pushNamed(context, '/theme');
@@ -147,34 +180,16 @@ class _SettingsPageState extends State<SettingsPage> {
           ),
           const Divider(),
           ListTile(
-            title: const Text('Dietary Preferences', style: TextStyle(fontWeight: FontWeight.bold)),
+            title: Text(
+              'Dietary Preferences',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: ThemeColor.textPrimary,
+              ),
+            ),
             trailing: const Icon(Icons.arrow_forward_ios),
             onTap: () {
               Navigator.pushNamed(context, '/dietary_preferences');
-            },
-          ),
-          const Divider(),
-          ListTile(
-            title: const Text('User Guide', style: TextStyle(fontWeight: FontWeight.bold)),
-            trailing: const Icon(Icons.arrow_forward_ios),
-            onTap: () {
-              Navigator.pushNamed(context, '/user_guide');
-            },
-          ),
-          const Divider(),
-          ListTile(
-            title: const Text('Support', style: TextStyle(fontWeight: FontWeight.bold)),
-            trailing: const Icon(Icons.arrow_forward_ios),
-            onTap: () {
-              Navigator.pushNamed(context, '/support');
-            },
-          ),
-          const Divider(),
-          ListTile(
-            title: const Text('Change Password', style: TextStyle(fontWeight: FontWeight.bold)),
-            trailing: const Icon(Icons.arrow_forward_ios),
-            onTap: () {
-              Navigator.pushNamed(context, '/change_password');
             },
           ),
           const Divider(),
@@ -191,7 +206,10 @@ class _SettingsPageState extends State<SettingsPage> {
             ListTile(
               title: const Text(
                 'Log out',
-                style: TextStyle(fontWeight: FontWeight.bold, color: Colors.red),
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.red,
+                ),
               ),
               onTap: () async {
                 await FirebaseAuth.instance.signOut();
@@ -207,14 +225,15 @@ class _SettingsPageState extends State<SettingsPage> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: ThemeColor.background,
         currentIndex: 0,
         type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(Icons.settings, color: Colors.green), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.notifications), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.home), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.search), label: ''),
-          BottomNavigationBarItem(icon: Icon(Icons.person), label: ''),
+        items: [
+          BottomNavigationBarItem(icon: Icon(Icons.settings, color: ThemeColor.primary), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.notifications, color: ThemeColor.textSecondary), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.home, color: ThemeColor.textSecondary), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.search, color: ThemeColor.textSecondary), label: ''),
+          BottomNavigationBarItem(icon: Icon(Icons.person, color: ThemeColor.textSecondary), label: ''),
         ],
         onTap: (index) {
           if (index == 0) {

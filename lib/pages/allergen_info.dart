@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:nutrilensfire/pages/glossary_page.dart';
-
+import '../theme/theme_colors.dart';
 
 class AllergenInfo extends StatefulWidget {
   const AllergenInfo({Key? key}) : super(key: key);
@@ -81,18 +81,23 @@ class _AllergenInfoState extends State<AllergenInfo> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: ThemeColor.background,
       appBar: AppBar(
         title: const Text("Ingredient Safety Preferences"),
-        backgroundColor: Colors.deepPurple,
+        backgroundColor: ThemeColor.background,
+        foregroundColor: ThemeColor.textPrimary,
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text(
+            Text(
               "Quick Ingredient Access",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 18,
+                fontWeight: FontWeight.bold,
+                color: ThemeColor.textPrimary,
+              ),
             ),
             const SizedBox(height: 10),
             ElevatedButton(
@@ -127,7 +132,8 @@ class _AllergenInfoState extends State<AllergenInfo> {
                 showDialog(
                   context: context,
                   builder: (_) => AlertDialog(
-                    title: const Text("Ingredients with Allergen Risk"),
+                    backgroundColor: ThemeColor.background,
+                    title: Text("Ingredients with Allergen Risk", style: TextStyle(color: ThemeColor.textPrimary)),
                     content: matchingIngredients.isEmpty
                         ? const Text("No ingredients match your allergen preferences.")
                         : SizedBox(
@@ -138,12 +144,13 @@ class _AllergenInfoState extends State<AllergenInfo> {
                       ),
                     ),
                     actions: [
-                      TextButton(onPressed: () => Navigator.pop(context), child: const Text("Close")),
+                      TextButton(onPressed: () => Navigator.pop(context), child: Text("Close", style: TextStyle(color: ThemeColor.primary))),
                     ],
                   ),
                 );
               },
-              child: const Text("All Ingredients with Allergen Risk"),
+              style: ElevatedButton.styleFrom(backgroundColor: ThemeColor.primary),
+              child: Text("All Ingredients with Allergen Risk", style: TextStyle(color: ThemeColor.textPrimary)),
             ),
 
             const SizedBox(height: 10),
@@ -155,21 +162,28 @@ class _AllergenInfoState extends State<AllergenInfo> {
                 showDialog(
                   context: context,
                   builder: (_) => AlertDialog(
-                    title: const Text("My Safe Ingredients"),
+                    backgroundColor: ThemeColor.background,
+                    title: Text("My Safe Ingredients", style: TextStyle(color: ThemeColor.textPrimary)),
                     content: safeIngredients.isEmpty
-                        ? const Text("No ingredients marked as safe.")
+                        ? Text("No ingredients marked as safe.", style: TextStyle(color: ThemeColor.textSecondary))
                         : Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: safeIngredients.map((e) => Text("\u2022 $e")).toList(),
+                      children: safeIngredients.map((e) => Text("\u2022 $e", style: TextStyle(color: ThemeColor.textSecondary))).toList(),
                     ),
                     actions: [
-                      TextButton(onPressed: () => Navigator.pop(context), child: const Text("Close"))
+                      TextButton(
+                        onPressed: () => Navigator.pop(context),
+                        child: Text("Close", style: TextStyle(color: ThemeColor.primary)),
+                      )
                     ],
                   ),
                 );
               },
-              child: loadingSafe ? const CircularProgressIndicator() : const Text("My Safe Ingredients"),
+              style: ElevatedButton.styleFrom(backgroundColor: ThemeColor.primary),
+              child: loadingSafe
+                  ? const CircularProgressIndicator()
+                  : Text("My Safe Ingredients", style: TextStyle(color: ThemeColor.textPrimary)),
             ),
             const SizedBox(height: 10),
             ElevatedButton(
@@ -180,21 +194,26 @@ class _AllergenInfoState extends State<AllergenInfo> {
                 showDialog(
                   context: context,
                   builder: (_) => AlertDialog(
-                    title: const Text("My Avoided Ingredients"),
+                    backgroundColor: ThemeColor.background,
+                    title: Text("My Avoided Ingredients", style: TextStyle(color: ThemeColor.textPrimary)),
                     content: avoidedIngredients.isEmpty
-                        ? const Text("No ingredients marked as avoided.")
+                        ? Text("No ingredients marked as avoided.", style: TextStyle(color: ThemeColor.textSecondary))
                         : Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: avoidedIngredients.map((e) => Text("\u2022 $e")).toList(),
+                      children: avoidedIngredients.map((e) => Text("• $e", style: TextStyle(color: ThemeColor.textSecondary)))
+                          .toList(),
                     ),
                     actions: [
-                      TextButton(onPressed: () => Navigator.pop(context), child: const Text("Close"))
+                      TextButton(onPressed: () => Navigator.pop(context), child: Text("Close", style: TextStyle(color: ThemeColor.primary)),)
                     ],
                   ),
                 );
               },
-              child: loadingAvoided ? const CircularProgressIndicator() : const Text("My Avoided Ingredients"),
+              style: ElevatedButton.styleFrom(backgroundColor: ThemeColor.primary),
+              child: loadingAvoided
+                  ? const CircularProgressIndicator()
+                  : Text("My Avoided Ingredients", style: TextStyle(color: ThemeColor.textPrimary)),
             ),
             const SizedBox(height: 10),
             ElevatedButton(
@@ -205,8 +224,10 @@ class _AllergenInfoState extends State<AllergenInfo> {
                   await prefsRef.remove();
 
                   ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(
-                      content: Text("✅ All marked ingredients have been cleared."),
+                    SnackBar(
+                      backgroundColor: ThemeColor.secondary,
+                      content: Text("✅ All marked ingredients have been cleared.",
+                          style: TextStyle(color: ThemeColor.textPrimary)),
                     ),
                   );
                 }
@@ -214,14 +235,14 @@ class _AllergenInfoState extends State<AllergenInfo> {
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.red.shade300,
               ),
-              child: const Text("Reset All Marked Ingredients"),
+              child: Text("Reset All Marked Ingredients", style: TextStyle(color: ThemeColor.textPrimary)),
             ),
             const SizedBox(height: 30),
             const Divider(),
             const SizedBox(height: 20),
-            const Text(
+            Text(
               "Select Allergens You React To",
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: ThemeColor.textPrimary),
             ),
             const SizedBox(height: 10),
             Column(
@@ -232,7 +253,7 @@ class _AllergenInfoState extends State<AllergenInfo> {
                   child: CheckboxListTile(
                     title: Text(
                       allergen[0].toUpperCase() + allergen.substring(1),
-                      style: const TextStyle(fontSize: 15),
+                      style: TextStyle(fontSize: 15, color: ThemeColor.textSecondary),
                     ),
                     value: isSelected,
                     onChanged: (bool? selected) async {

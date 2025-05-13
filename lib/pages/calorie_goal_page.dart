@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../components/text_field_fab.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
+import '../theme/theme_colors.dart';
 
 Future<String?> getCalorieGoal() async {
   User? user = FirebaseAuth.instance.currentUser;
@@ -34,69 +35,82 @@ class CalorieGoalPage extends StatelessWidget {
     return showDialog(
         context: context,
         builder: (context) {
-      return AlertDialog(
-        title: Text('Enter Calorie Goal'),
-        content: TextFieldFab(controller: goalController, hintText: 'Daily Calories', obscureText: false),
-        actions: <Widget>[
-          TextButton(
-            child: Text('Cancel'),
-            onPressed: () {
-              Navigator.pop(context);
-            },
-          ),
-          TextButton(
-            child: Text('Submit'),
-            onPressed: () {
-              addCalorieGoal(goalController.text);
-              Navigator.pop(context);
-              Navigator.pop(context);
-              Navigator.push(context, MaterialPageRoute(builder: (context) => CalorieGoalPage()));
-            },
-          )
-        ]
-      );
-    }
+          return AlertDialog(
+              backgroundColor: ThemeColor.background,
+              title: Text(
+                'Enter Calorie Goal',
+                style: TextStyle(color: ThemeColor.textPrimary),
+              ),
+              content: TextFieldFab(controller: goalController, hintText: 'Daily Calories', obscureText: false),
+              actions: <Widget>[
+                TextButton(
+                  child: Text('Cancel', style: TextStyle(color: ThemeColor.textSecondary)),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+                TextButton(
+                  child: Text('Submit', style: TextStyle(color: ThemeColor.primary)),
+                  onPressed: () {
+                    addCalorieGoal(goalController.text);
+                    Navigator.pop(context);
+                    Navigator.pop(context);
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => CalorieGoalPage()));
+                  },
+                )
+              ]
+          );
+        }
     );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Calorie Goal'),
-      ),
-      body: Center(
-        child:
-        Column(
-        children: [
-          const SizedBox(height: 24),
-          FutureBuilder(
-            future: getCalorieGoal(),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const CircularProgressIndicator();
-              }
-              if (snapshot.hasError) {
-                return Text(
-                  snapshot.error.toString(),
-                );
-              }
-              else {
-                return Text(
-                  'Current Calorie Goal : ${snapshot.data.toString()}',
-                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                );
-              }
-            }
-          ),
-          const SizedBox(height: 24),
-          ElevatedButton(
-            onPressed: () {
-              inputCalorieGoal(context);
-            },
-            child: const Text("Change Calorie Goal"),
-          ),
-    ])));
+        backgroundColor: ThemeColor.background,
+        appBar: AppBar(
+          title: const Text('Calorie Goal'),
+          centerTitle: true,
+          elevation: 0,
+          backgroundColor: ThemeColor.background,
+          foregroundColor: ThemeColor.textPrimary,
+        ),
+        body: Center(
+            child:
+            Column(
+                children: [
+                  FutureBuilder(
+                      future: getCalorieGoal(),
+                      builder: (context, snapshot) {
+                        if (snapshot.connectionState == ConnectionState.waiting) {
+                          return const CircularProgressIndicator();
+                        }
+                        if (snapshot.hasError) {
+                          return Text(
+                            snapshot.error.toString(),
+                            style: TextStyle(color: ThemeColor.textPrimary),
+                          );
+                        }
+                        else {
+                          return Text(
+                            'Current Calorie Goal : ${snapshot.data.toString()}',
+                            style: TextStyle(
+                              color: ThemeColor.textPrimary,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                            ),
+                          );
+                        }
+                      }
+                  ),
+                  const SizedBox(height: 24),
+                  ElevatedButton(
+                    onPressed: () {
+                      inputCalorieGoal(context);
+                    },
+                    child: const Text("Change Calorie Goal"),
+                  ),
+                ])));
   }
 
 
