@@ -1,16 +1,60 @@
-# nutrilensfire
+# Nutrilens
 
-A new Flutter project.
+### 📱 Overview
 
-## Getting Started
+Nutrilens is an Android mobile app built with **Flutter** that helps users read food labels using **OCR**, detect allergens, scan barcodes, fetch nutrition information from a local database, and track daily food consumption.
 
-This project is a starting point for a Flutter application.
+---
 
-A few resources to get you started if this is your first Flutter project:
+### Features
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+* **User Authentication** – Secure login and account management.
+* **OCR Label Scanning** – Extracts text from food labels to identify allergens.
+* **Barcode Scanning** – Retrieves nutrition facts from a database via UPC codes.
+* **Nutrition Tracking** – Logs and tracks user consumption history.
+* **Local Database Support** – Stores food and nutrition data for offline use.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+---
+
+### Tech Stack
+
+* **Frontend:** Flutter (Dart)
+* **Backend:** Firebase Authentication, Firebase Realtime Database, REST APIs
+* **Libraries/Tools:** Google ML Kit (OCR), Barcode Scanner plugin
+* **Version Control:** GitHub
+
+---
+
+### My Contributions
+
+* Implemented **user login & authentication** with Firebase.
+* Built **API integration** to fetch and populate local database with nutrition data.
+* Developed **nutrition tracking system** for storing/retrieving food consumption history.
+* Coordinated backend integration with frontend features (OCR, barcode scanning, allergen detection).
+
+---
+
+### ⚡ Installation
+
+1. Clone the repo:
+
+   ```bash
+   git clone https://github.com/BronsonHua1/NutriLens.git
+   cd NutriLens
+   ```
+2. Install dependencies:
+
+   ```bash
+   flutter pub get
+   ```
+3. Run the app on an emulator or device:
+
+   ```bash
+   flutter run
+   ```
+
+---
+
+This way, anyone reviewing the repo can instantly see **what it does, how you built it, and what you personally contributed** — which is exactly what recruiters and interviewers want.
+
+👉 Do you want me to also mock up a **short “Project blurb”** version you can paste directly into your resume that points to the README (so they connect smoothly)?
