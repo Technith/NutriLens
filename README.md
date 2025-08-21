@@ -1,6 +1,6 @@
 # Nutrilens
 
-### 📱 Overview
+### Overview
 
 Nutrilens is an Android mobile app built with **Flutter** that helps users read food labels using **OCR**, detect allergens, scan barcodes, fetch nutrition information from a local database, and track daily food consumption.
 
