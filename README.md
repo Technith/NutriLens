@@ -34,7 +34,7 @@ Nutrilens is an Android mobile app built with **Flutter** that helps users read 
 
 ---
 
-### ⚡ Installation
+### Installation
 
 1. Clone the repo:
 
@@ -52,9 +52,3 @@ Nutrilens is an Android mobile app built with **Flutter** that helps users read 
    ```bash
    flutter run
    ```
-
----
-
-This way, anyone reviewing the repo can instantly see **what it does, how you built it, and what you personally contributed** — which is exactly what recruiters and interviewers want.
-
-👉 Do you want me to also mock up a **short “Project blurb”** version you can paste directly into your resume that points to the README (so they connect smoothly)?
