@@ -33,22 +33,3 @@ Nutrilens is an Android mobile app built with **Flutter** that helps users read 
 * Coordinated backend integration with frontend features (OCR, barcode scanning, allergen detection).
 
 ---
-
-### Installation
-
-1. Clone the repo:
-
-   ```bash
-   git clone https://github.com/BronsonHua1/NutriLens.git
-   cd NutriLens
-   ```
-2. Install dependencies:
-
-   ```bash
-   flutter pub get
-   ```
-3. Run the app on an emulator or device:
-
-   ```bash
-   flutter run
-   ```
